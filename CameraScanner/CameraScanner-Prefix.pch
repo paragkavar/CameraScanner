@@ -1,0 +1,22 @@
+//
+// Prefix header for all source files of the 'CameraScanner' target in the 'CameraScanner' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+    #import <SDWebImage/SDImageCache.h>
+    #import <RestKit/RestKit.h>
+    #import <PonyDebugger/PonyDebugger.h>
+    #import "NSManagedObject+ActiveRecord.h"
+    #import "TestFlight.h"
+    #import "WebEngine.h"
+    #import "MBProgressHUD.h"
+#endif
