@@ -32,6 +32,9 @@ extern NSString *const VendCredentialsStore;
 - (void)getProductsWithPagination:(WebEnginePaginationSucess)success
                           failure:(WebEnginePaginationFailure)failure
                          fromPage:(NSUInteger)fromPage;
+- (void)getProductBySKU:(NSString *)sku
+                success:(WebEngineSuccess)success
+                failure:(WebEngineFaluire)failure;
 - (void)postProduct:(Product *)product
             success:(WebEngineSuccess)success
             failure:(WebEngineFaluire)failure;
@@ -43,4 +46,6 @@ extern NSString *const VendCredentialsStore;
               failure:(WebEngineFaluire)failure;
 
 - (void)logout;
+
+- (BOOL)hasInternet;
 @end

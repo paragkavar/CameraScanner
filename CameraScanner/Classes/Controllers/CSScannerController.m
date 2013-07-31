@@ -81,18 +81,41 @@
 
 - (void)findProductWithSKU:(NSString *)sku
 {
-    _scannedProduct = [Product findFirstByAttribute:@"sku" withValue:sku];
-    
-    if (!_scannedProduct)
-    {
-        // Perfom to create Product
-        [self performSegueWithIdentifier:@"createProduct" sender:self];
-    }
-    else
-    {
-        // Show exist product
-        [self performSegueWithIdentifier:@"showProduct" sender:self];
-    }
+    //_scannedProduct = [Product findFirstByAttribute:@"sku" withValue:sku];
+    // Perfom to create Product
+    __weak typeof(self) weakSelf = self;
+    [[WebEngine sharedManager] getProductBySKU:sku success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog(@"%@", mappingResult.firstObject);
+        if (!mappingResult.firstObject)
+        {
+            [weakSelf performSegueWithIdentifier:@"createProduct" sender:nil];
+        }
+        else
+        {
+            weakSelf.scannedProduct = mappingResult.firstObject;
+            [weakSelf performSegueWithIdentifier:@"showProduct" sender:nil];
+        }
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", @"Warning")
+                                    message:error.localizedDescription
+                                   delegate:nil
+                          cancelButtonTitle:NSLocalizedString(@"Ok", @"Ok")
+                          otherButtonTitles:nil] show];
+        
+        TFLog(@"%@", error);
+        
+        weakSelf.scannedProduct = [Product findFirstByAttribute:@"sku" withValue:sku];
+        if (!_scannedProduct)
+        {
+            
+            [self performSegueWithIdentifier:@"createProduct" sender:self];
+        }
+        else
+        {
+            // Show exist product
+            [self performSegueWithIdentifier:@"showProduct" sender:self];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning

@@ -14,6 +14,8 @@
 		842BF4DF1787ADB10066945A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 842BF4DE1787ADB10066945A /* libz.dylib */; };
 		8445A03B17861B2800D52FC8 /* CSCreateProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 8445A03A17861B2800D52FC8 /* CSCreateProduct.m */; };
 		8445A03E17861B5900D52FC8 /* CSProductDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 8445A03D17861B5900D52FC8 /* CSProductDetail.m */; };
+		849DB4FD17A9AD6F004B4A5D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849DB4FC17A9AD6F004B4A5D /* SystemConfiguration.framework */; };
+		849DB50017A9B8B7004B4A5D /* NSURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DB4FF17A9B8B7004B4A5D /* NSURLParser.m */; };
 		84D6C5161784881E004DB9C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D6C5151784881E004DB9C2 /* UIKit.framework */; };
 		84D6C5181784881E004DB9C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D6C5171784881E004DB9C2 /* Foundation.framework */; };
 		84D6C51A1784881E004DB9C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D6C5191784881E004DB9C2 /* CoreGraphics.framework */; };
@@ -61,6 +63,9 @@
 		8445A03A17861B2800D52FC8 /* CSCreateProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCreateProduct.m; path = Classes/Controllers/CSCreateProduct.m; sourceTree = "<group>"; };
 		8445A03C17861B5900D52FC8 /* CSProductDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSProductDetail.h; path = Classes/Controllers/CSProductDetail.h; sourceTree = "<group>"; };
 		8445A03D17861B5900D52FC8 /* CSProductDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSProductDetail.m; path = Classes/Controllers/CSProductDetail.m; sourceTree = "<group>"; };
+		849DB4FC17A9AD6F004B4A5D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		849DB4FE17A9B8B7004B4A5D /* NSURLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSURLParser.h; path = Classes/Network/NSURLParser.h; sourceTree = "<group>"; };
+		849DB4FF17A9B8B7004B4A5D /* NSURLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSURLParser.m; path = Classes/Network/NSURLParser.m; sourceTree = "<group>"; };
 		84D6C5121784881E004DB9C2 /* CameraScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D6C5151784881E004DB9C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84D6C5171784881E004DB9C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -135,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849DB4FD17A9AD6F004B4A5D /* SystemConfiguration.framework in Frameworks */,
 				842BF4DF1787ADB10066945A /* libz.dylib in Frameworks */,
 				84D6C56617848E56004DB9C2 /* libiconv.dylib in Frameworks */,
 				84D6C56417848E3C004DB9C2 /* QuartzCore.framework in Frameworks */,
@@ -194,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				842BF4DE1787ADB10066945A /* libz.dylib */,
+				849DB4FC17A9AD6F004B4A5D /* SystemConfiguration.framework */,
 				84D6C56517848E56004DB9C2 /* libiconv.dylib */,
 				84D6C56317848E3C004DB9C2 /* QuartzCore.framework */,
 				84D6C56117848E2F004DB9C2 /* AVFoundation.framework */,
@@ -340,6 +347,8 @@
 			children = (
 				84D6C57B17849F0A004DB9C2 /* WebEngine.h */,
 				84D6C57C17849F0A004DB9C2 /* WebEngine.m */,
+				849DB4FE17A9B8B7004B4A5D /* NSURLParser.h */,
+				849DB4FF17A9B8B7004B4A5D /* NSURLParser.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -489,6 +498,7 @@
 				8445A03E17861B5900D52FC8 /* CSProductDetail.m in Sources */,
 				842BF4D617879A910066945A /* CSTextFieldCell.m in Sources */,
 				842BF4D91787A3DD0066945A /* NSString+Validate.m in Sources */,
+				849DB50017A9B8B7004B4A5D /* NSURLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

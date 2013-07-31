@@ -8,6 +8,8 @@
 
 #import "CSLoginController.h"
 
+#define DEBUG_LOGIN NO
+
 NSString *const VendHQ_COM = @".vendhq.com";
 
 @interface CSLoginController () <UITextFieldDelegate>
@@ -35,6 +37,13 @@ NSString *const VendHQ_COM = @".vendhq.com";
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    if (DEBUG_LOGIN)
+    {
+        _storeName.text = @"roststore.vendhq.com";
+        _loginTextField.text = @"kobizsky@gmail.com";
+        _passwordTextField.text = @"cd46779cd";
+    }
 }
 
 - (void)didReceiveMemoryWarning

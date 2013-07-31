@@ -11,6 +11,7 @@
 #import "WebEngine.h"
 #import "Product.h"
 #import <NSData+Base64/NSData+Base64.h>
+#import "NSURLParser.h"
 
 NSString *const VendCredentialsLogin = @"VendCredentialsLogin";
 NSString *const VendCredentialsPassword = @"VendCredentialsPassword";
@@ -24,6 +25,8 @@ NSURL *VEND_STORE_API = nil;
 @property (nonatomic, strong) RKObjectManager *objectManager;
 @property (nonatomic, strong) RKManagedObjectStore *objectStore;
 @property (nonatomic, strong) RKPaginator *paginator;
+
+@property (nonatomic, assign) BOOL isInternet;
 
 @end
 
@@ -73,21 +76,30 @@ NSURL *VEND_STORE_API = nil;
     _objectManager.managedObjectStore = _objectStore;
     _objectManager.requestSerializationMIMEType = RKMIMETypeJSON;
     
-    [_objectManager.HTTPClient setDefaultHeader:@"Content-Type" value:RKMIMETypeJSON];
-    
-    
-    [_objectManager.HTTPClient setAuthorizationHeaderWithUsername:login password:password];
     
     [RKObjectManager setSharedManager:_objectManager];
     
     [self configureMapping];
     [self configurateRouting];
     
+    _isInternet = NO;
+
+    __weak typeof(self) wSelf = self;
     
-    [[WebEngine sharedManager] getProductsSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        
+    [_objectManager.HTTPClient setDefaultHeader:@"Content-Type" value:RKMIMETypeJSON];
+    [_objectManager.HTTPClient setAuthorizationHeaderWithUsername:login password:password];
+    [_objectManager.HTTPClient setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusNotReachable:
+                wSelf.isInternet = NO;
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                wSelf.isInternet = YES;
+                break;
+            default:
+                break;
+        }
     }];
 }
 
@@ -163,8 +175,11 @@ NSURL *VEND_STORE_API = nil;
         
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
+        NSURLParser *urlParser = [[NSURLParser alloc] initWithURLString:URL.absoluteString];
+        BOOL clear = [urlParser valueForVariable:@"sku"] == nil;
+        
         NSString *productId;
-        if (match) {
+        if (match && clear) {
             productId = [argsDict objectForKey:@"ids"];
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Product"];
             return fetchRequest;
@@ -184,6 +199,8 @@ NSURL *VEND_STORE_API = nil;
      }];
     
     [_objectManager setPaginationMapping:paginationMapping];
+    
+
 }
 
 - (void)getProductsSuccess:(WebEngineSuccess)success
@@ -193,6 +210,19 @@ NSURL *VEND_STORE_API = nil;
                           parameters:nil
                              success:success
                              failure:failure];
+    
+
+}
+
+- (void)getProductBySKU:(NSString *)sku
+                success:(WebEngineSuccess)success
+                failure:(WebEngineFaluire)failure
+{
+        [_objectManager getObject:nil
+                             path:@"products"
+                       parameters:@{@"sku": sku}
+                          success:success
+                          failure:failure];
 }
 
 - (void)getProductsWithPagination:(WebEnginePaginationSucess)success
@@ -239,6 +269,11 @@ NSURL *VEND_STORE_API = nil;
                       parameters:nil
                          success:success
                          failure:failure];
+}
+
+- (BOOL)hasInternet
+{
+    return _isInternet;
 }
 
 - (void)logout
