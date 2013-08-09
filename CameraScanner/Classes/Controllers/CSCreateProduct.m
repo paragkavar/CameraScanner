@@ -50,7 +50,7 @@
     _sku = _itemForEdit ? _itemForEdit.sku : _sku;
     _name = _itemForEdit ? _itemForEdit.name : @"";
     _handle =  _itemForEdit ? _itemForEdit.handle : @"";
-    _price = _itemForEdit ? [NSString stringWithFormat:@"%0.2f", _itemForEdit.price.floatValue] : @"";
+    _price = _itemForEdit ? [NSString stringWithFormat:@"%0.2f", _itemForEdit.price.floatValue + _itemForEdit.tax.floatValue] : @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,7 +112,7 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InventoryCell" forIndexPath:indexPath];
         Outlet *outlet = [[_itemForEdit.inventory allObjects] objectAtIndex:indexPath.row];
 
-        cell.textLabel.text = [NSString stringWithFormat:@"%d", outlet.name.integerValue];
+        cell.textLabel.text = outlet.name;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", outlet.count.integerValue];
         
         return cell;

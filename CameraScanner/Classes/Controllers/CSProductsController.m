@@ -186,7 +186,7 @@
 
 - (void)configurateCell:(UITableViewCell *)cell forObject:(Product *)object atIndexPath:(NSIndexPath *)indexPath {
     cell.textLabel.text = object.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.02f", object.price.floatValue - object.tax.floatValue];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.02f", object.price.floatValue + object.tax.floatValue];
 }
 
 #pragma mark - Segues
