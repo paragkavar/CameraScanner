@@ -2,7 +2,7 @@
 //  Product.m
 //  CameraScanner
 //
-//  Created by Rostislav Kobizskiy on 7/3/13.
+//  Created by Rostislav Kobizskiy on 8/9/13.
 //  Copyright (c) 2013 Rost's company. All rights reserved.
 //
 
@@ -27,5 +27,6 @@
 @dynamic tags;
 @dynamic tax;
 @dynamic updatedAt;
+@dynamic inventory;
 
 @end

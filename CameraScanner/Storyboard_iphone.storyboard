@@ -159,7 +159,7 @@
                     <navigationItem key="navigationItem" title="Scanner" id="Yha-Ls-2df"/>
                     <connections>
                         <segue destination="Kum-xQ-Y49" kind="push" identifier="createProduct" id="2ml-Lu-auf"/>
-                        <segue destination="dAG-jc-20M" kind="push" identifier="showProduct" id="HrA-HD-Kjj"/>
+                        <segue destination="Kum-xQ-Y49" kind="push" identifier="showProduct" id="bt0-cn-fNf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMN-9K-n8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -181,7 +181,7 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="bk6-aN-YC3" customClass="CSTextFieldCell">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -208,6 +208,27 @@
                                         <connections>
                                             <outlet property="textField" destination="qwm-rD-Ncx" id="9cp-Ge-uzA"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InventoryCell" textLabel="xtJ-f3-9hq" detailTextLabel="mWe-EH-hct" style="IBUITableViewCellStyleValue1" id="cew-FZ-dUh" customClass="CSTextFieldCell">
+                                        <rect key="frame" x="0.0" y="91" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Inventory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtJ-f3-9hq">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-EH-hct">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -238,12 +259,54 @@
             </objects>
             <point key="canvasLocation" x="1825" y="0.0"/>
         </scene>
+        <!--Table View Controller - Outlet-->
+        <scene sceneID="VvZ-nF-8s8">
+            <objects>
+                <tableViewController id="5lD-hG-1Mc" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="pm6-ED-miT">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="ajQ-pH-Ngm" detailTextLabel="k4T-oh-oYq" style="IBUITableViewCellStyleValue1" id="sVa-tN-JEP">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajQ-pH-Ngm">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4T-oh-oYq">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5lD-hG-1Mc" id="IGg-97-Gfb"/>
+                            <outlet property="delegate" destination="5lD-hG-1Mc" id="dHT-6U-95K"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Outlet" id="tB9-mY-fOj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yTC-VU-2hy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2280" y="0.0"/>
+        </scene>
         <!--Product Detail-->
         <scene sceneID="ZGa-8K-INU">
             <objects>
                 <viewController id="dAG-jc-20M" customClass="CSProductDetail" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HUl-LK-bmG">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="45" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="2hP-He-B3m">
@@ -288,11 +351,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZOM-kM-ClO">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="9Y3-yg-KQE">
-                            <connections>
-                                <segue destination="Kum-xQ-Y49" kind="push" identifier="editProduct" id="jYc-8F-t8n"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="9Y3-yg-KQE"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="2hP-He-B3m" id="66x-XZ-iSL"/>
@@ -300,7 +359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8Y-1I-oIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1285" y="391"/>
+            <point key="canvasLocation" x="1297" y="819"/>
         </scene>
         <!--Products Controller - Products-->
         <scene sceneID="Exs-lF-fcx">
@@ -334,7 +393,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="dAG-jc-20M" kind="push" identifier="showProduct" id="PoM-Dg-WBV"/>
+                                    <segue destination="Kum-xQ-Y49" kind="push" identifier="showProduct" id="W8c-fT-rAB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -400,13 +459,61 @@
             <point key="canvasLocation" x="283" y="777"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CSCreateProduct" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSCreateProduct.h"/>
+            <relationships>
+                <relationship kind="action" name="handleDone:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="CSLoginController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSLoginController.h"/>
+            <relationships>
+                <relationship kind="action" name="handleLogin:"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="storeName" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CSProductDetail" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSProductDetail.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="CSProductsController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSProductsController.h"/>
+        </class>
+        <class className="CSScannerController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSScannerController.h"/>
+            <relationships>
+                <relationship kind="action" name="scanHandle:"/>
+            </relationships>
+        </class>
+        <class className="CSSettingsController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSSettingsController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:"/>
+            </relationships>
+        </class>
+        <class className="CSTextFieldCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSTextFieldCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="PoM-Dg-WBV"/>
-        <segue reference="jYc-8F-t8n"/>
+        <segue reference="W8c-fT-rAB"/>
     </inferredMetricsTieBreakers>
 </document>

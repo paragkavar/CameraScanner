@@ -75,7 +75,7 @@
             break;
         case 1:
             cell.textLabel.text = NSLocalizedString(@"Price", @"Price");
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%.02f", _productItem.price.floatValue];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%.02f", _productItem.price.floatValue - _productItem.tax.floatValue];
             break;
         default:
             break;

@@ -7,7 +7,10 @@
 //
 
 #import "CSCreateProduct.h"
+
 #import "Product.h"
+#import "Outlet.h"
+
 #import "WebEngine.h"
 #import "CSTextFieldCell.h"
 
@@ -44,6 +47,7 @@
     
     self.navigationItem.title = _itemForEdit ? NSLocalizedString(@"Edit Item", @"Edit Item") : NSLocalizedString(@"Create Item", @"Create Item");
     
+    _sku = _itemForEdit ? _itemForEdit.sku : _sku;
     _name = _itemForEdit ? _itemForEdit.name : @"";
     _handle =  _itemForEdit ? _itemForEdit.handle : @"";
     _price = _itemForEdit ? [NSString stringWithFormat:@"%0.2f", _itemForEdit.price.floatValue] : @"";
@@ -59,49 +63,75 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return (_itemForEdit != nil && _itemForEdit.inventory.count) ? 2 : 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    if (section == 0) return 4;
+    if (section == 1) return _itemForEdit.inventory.count;
+    
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CSTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
-    switch (indexPath.row) {
-        case 0:
-            cell.textField.text = _sku;
-            cell.textField.enabled = NO;
-            break;
-        case 1:
-            cell.textField.text = _name;
-            cell.textField.placeholder = NSLocalizedString(@"Name", @"Name");
-            cell.textField.returnKeyType = UIReturnKeyNext;
-            break;
-        case 2:
-            cell.textField.text = _handle;
-            cell.textField.placeholder = NSLocalizedString(@"Handle", @"Handle");
-            cell.textField.returnKeyType = UIReturnKeyNext;
-            break;
-        case 3:
-            cell.textField.text = _price;
-            cell.textField.placeholder = NSLocalizedString(@"Price", @"Price");
-            cell.textField.keyboardType = UIKeyboardTypeDecimalPad;
-            cell.textField.returnKeyType = UIReturnKeyDone;
-            break;
-        default:
-            break;
+    if (indexPath.section == 0)
+    {
+        CSTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        
+        switch (indexPath.row) {
+            case 0:
+                cell.textField.text = _sku;
+                cell.textField.enabled = NO;
+                break;
+            case 1:
+                cell.textField.text = _name;
+                cell.textField.placeholder = NSLocalizedString(@"Name", @"Name");
+                cell.textField.returnKeyType = UIReturnKeyNext;
+                break;
+            case 2:
+                cell.textField.text = _handle;
+                cell.textField.placeholder = NSLocalizedString(@"Handle", @"Handle");
+                cell.textField.returnKeyType = UIReturnKeyNext;
+                break;
+            case 3:
+                cell.textField.text = _price;
+                cell.textField.placeholder = NSLocalizedString(@"Price", @"Price");
+                cell.textField.keyboardType = UIKeyboardTypeDecimalPad;
+                cell.textField.returnKeyType = UIReturnKeyDone;
+                break;
+            default:
+                break;
+        }
+        
+        return cell;
+    }
+    else
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InventoryCell" forIndexPath:indexPath];
+        Outlet *outlet = [[_itemForEdit.inventory allObjects] objectAtIndex:indexPath.row];
+
+        cell.textLabel.text = [NSString stringWithFormat:@"%d", outlet.name.integerValue];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", outlet.count.integerValue];
+        
+        return cell;
     }
     
-    return cell;
+    return nil;
 }
 
 #pragma mark - TableView Delegate
 
-
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 1)
+    {
+        return NSLocalizedString(@"Inventory", nil);
+    }
+    
+    return nil;
+}
 
 #pragma mark - TextField Delegate
 

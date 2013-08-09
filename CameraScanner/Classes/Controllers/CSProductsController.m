@@ -9,7 +9,7 @@
 #import "CSProductsController.h"
 #import "WebEngine.h"
 #import "Product.h"
-#import "CSProductDetail.h"
+#import "CSCreateProduct.h"
 
 @interface CSProductsController () <NSFetchedResultsControllerDelegate>
 
@@ -186,7 +186,7 @@
 
 - (void)configurateCell:(UITableViewCell *)cell forObject:(Product *)object atIndexPath:(NSIndexPath *)indexPath {
     cell.textLabel.text = object.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.02f", object.price.floatValue];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.02f", object.price.floatValue - object.tax.floatValue];
 }
 
 #pragma mark - Segues
@@ -196,7 +196,7 @@
     if ([segue.identifier isEqualToString:@"showProduct"])
     {
         Product *selectedProduct = [_fetchedController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
-        [segue.destinationViewController setProductItem:selectedProduct];
+        [segue.destinationViewController setItemForEdit:selectedProduct];
     }
 }
 

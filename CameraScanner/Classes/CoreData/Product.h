@@ -2,7 +2,7 @@
 //  Product.h
 //  CameraScanner
 //
-//  Created by Rostislav Kobizskiy on 7/3/13.
+//  Created by Rostislav Kobizskiy on 8/9/13.
 //  Copyright (c) 2013 Rost's company. All rights reserved.
 //
 
@@ -28,5 +28,14 @@
 @property (nonatomic, retain) NSString * tags;
 @property (nonatomic, retain) NSNumber * tax;
 @property (nonatomic, retain) NSDate * updatedAt;
+@property (nonatomic, retain) NSSet *inventory;
+@end
+
+@interface Product (CoreDataGeneratedAccessors)
+
+- (void)addInventoryObject:(NSManagedObject *)value;
+- (void)removeInventoryObject:(NSManagedObject *)value;
+- (void)addInventory:(NSSet *)values;
+- (void)removeInventory:(NSSet *)values;
 
 @end

@@ -124,8 +124,23 @@ NSURL *VEND_STORE_API = nil;
      @"updated_at":     @"updatedAt",
      @"deleted_at":     @"deletedAt"
      }];
+    
+    RKEntityMapping *inventoryMapping = [RKEntityMapping mappingForEntityForName:@"Outlet" inManagedObjectStore:store];
+    [inventoryMapping setIdentificationAttributes:@[@"ids"]];
+    [inventoryMapping addAttributeMappingsFromDictionary:@{
+     @"outlet_id":      @"ids",
+     @"outlet_name":    @"name",
+     @"count":          @"count",
+     @"reorder_point":  @"reorderPoint",
+     @"restock_level":  @"restockLevel"
+     }];
+    
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"inventory" toKeyPath:@"inventory" withMapping:inventoryMapping]];
+    
     return mapping;
 }
+
+
 
 - (void)configurateRouting {
     // Relationship Routing

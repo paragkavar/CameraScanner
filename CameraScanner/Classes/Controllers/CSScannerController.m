@@ -9,7 +9,6 @@
 #import "CSScannerController.h"
 #import "ZBarSDK.h"
 #import "Product.h"
-#import "CSProductDetail.h"
 #import "CSCreateProduct.h"
 
 @interface CSScannerController () <ZBarReaderDelegate>
@@ -83,6 +82,10 @@
 {
     //_scannedProduct = [Product findFirstByAttribute:@"sku" withValue:sku];
     // Perfom to create Product
+    __weak MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+
+    
     __weak typeof(self) weakSelf = self;
     [[WebEngine sharedManager] getProductBySKU:sku success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"%@", mappingResult.firstObject);
@@ -95,6 +98,7 @@
             weakSelf.scannedProduct = mappingResult.firstObject;
             [weakSelf performSegueWithIdentifier:@"showProduct" sender:nil];
         }
+        [hud hide:YES];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", @"Warning")
                                     message:error.localizedDescription
@@ -115,6 +119,7 @@
             // Show exist product
             [self performSegueWithIdentifier:@"showProduct" sender:self];
         }
+        [hud hide:YES];
     }];
 }
 
@@ -145,7 +150,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showProduct"]) {
-        [segue.destinationViewController setProductItem:_scannedProduct];
+        [segue.destinationViewController setItemForEdit:_scannedProduct];
         _scannedProduct = nil;
     } else if ([segue.identifier isEqualToString:@"createProduct"]) {
         [segue.destinationViewController setSku:_sku];

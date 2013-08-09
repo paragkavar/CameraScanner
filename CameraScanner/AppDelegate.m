@@ -16,7 +16,7 @@
     
 #if DEBUG
     _ponyDebugger = [PDDebugger defaultInstance];
-    [_ponyDebugger connectToURL:[NSURL URLWithString:@"ws://192.168.0.93:9000/device"]];
+    [_ponyDebugger connectToURL:[NSURL URLWithString:@"ws://192.168.1.2:9000/device"]];
     [_ponyDebugger enableNetworkTrafficDebugging];
     [_ponyDebugger forwardAllNetworkTraffic];
     [_ponyDebugger enableCoreDataDebugging];
