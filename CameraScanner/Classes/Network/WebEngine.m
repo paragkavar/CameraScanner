@@ -121,6 +121,8 @@ NSURL *VEND_STORE_API = nil;
      @"price":          @"price",
      @"retail_price":   @"retailPrice",
      @"tax":            @"tax",
+     @"tax_name":       @"taxName",
+     @"tax_rate":       @"taxRate",
      @"updated_at":     @"updatedAt",
      @"deleted_at":     @"deletedAt"
      }];
