@@ -8,7 +8,7 @@
 
 #import "CSLoginController.h"
 
-#define DEBUG_LOGIN NO
+#define DEBUG_LOGIN YES
 
 NSString *const VendHQ_COM = @".vendhq.com";
 

@@ -17,7 +17,7 @@
 #import "NSString+Validate.h"
 #import "UIView+FindFirstResponder.h"
 
-@interface CSCreateProduct () <UITableViewDataSource, UITableViewDelegate>
+@interface CSCreateProduct () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -229,11 +229,11 @@
                                            delegate:self
                                   cancelButtonTitle:@"Ok"
                                   otherButtonTitles:nil] show];
-                [self.navigationController popViewControllerAnimated:YES];
+               // [self.navigationController popViewControllerAnimated:YES];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 [[[UIAlertView alloc] initWithTitle:@"Error"
                                             message:error.localizedDescription
-                                           delegate:self
+                                           delegate:nil
                                   cancelButtonTitle:@"Ok"
                                   otherButtonTitles:nil] show];
                 TFLog(@"%@", error);
@@ -254,12 +254,12 @@
                                            delegate:self
                                   cancelButtonTitle:@"Ok"
                                   otherButtonTitles:nil] show];
-                [self.navigationController popViewControllerAnimated:YES];
+                //[self.navigationController popViewControllerAnimated:YES];
                 
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 [[[UIAlertView alloc] initWithTitle:@"Error"
                                             message:error.localizedDescription
-                                           delegate:self
+                                           delegate:nil
                                   cancelButtonTitle:@"Ok"
                                   otherButtonTitles:nil] show];
                 
@@ -275,6 +275,12 @@
         }
     }
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 
 - (void)viewDidUnload {

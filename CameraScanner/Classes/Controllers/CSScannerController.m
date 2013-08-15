@@ -15,6 +15,7 @@
 
 @property (nonatomic, copy) NSString *sku;
 @property (nonatomic, strong) Product *scannedProduct;
+@property (nonatomic) BOOL fromCamera;
 
 @end
 
@@ -33,15 +34,43 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
-
-
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+    [super viewDidAppear:animated];    
     
+    if (_fromCamera == NO)
+    {
+        
+        _sku = @"";
+        ZBarReaderViewController *reader = [ZBarReaderViewController new];
+        reader.readerDelegate = self;
+        reader.supportedOrientationsMask = ZBarOrientationMaskAll;
+        
+        ZBarImageScanner *scanner = reader.scanner;
+        // TODO: (optional) additional reader configuration here
+        
+        // EXAMPLE: disable rarely used I2/5 to improve performance
+        [scanner setSymbology: ZBAR_I25
+                       config: ZBAR_CFG_ENABLE
+                           to: 0];
+        
+        // present and release the controller
+        
+        [self presentViewController:reader animated:YES completion:nil];
+    }
+    
+    _fromCamera = NO;
 
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    _fromCamera = YES;
+    [picker dismissViewControllerAnimated:NO completion:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (void) imagePickerController: (UIImagePickerController*) reader
@@ -64,7 +93,7 @@
     
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
     _sku = symbol.data;
-
+    _fromCamera = YES;
     [reader dismissViewControllerAnimated:YES completion:^{
 //        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //        [[WebEngine sharedManager] getProductsSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
