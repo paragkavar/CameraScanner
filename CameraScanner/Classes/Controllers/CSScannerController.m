@@ -41,8 +41,7 @@
     [super viewDidAppear:animated];    
     
     if (_fromCamera == NO)
-    {
-        
+    {        
         _sku = @"";
         ZBarReaderViewController *reader = [ZBarReaderViewController new];
         reader.readerDelegate = self;
