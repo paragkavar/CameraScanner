@@ -24,6 +24,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *handle;
 @property (nonatomic, copy) NSString *price;
+@property (nonatomic) BOOL firstLaunch;
 
 
 - (IBAction)handleDone:(id)sender;
@@ -38,14 +39,15 @@
     if (self) {
         // Custom initialization
     }
-    return self;
+    return self;    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.    
-    
+	// Do any additional setup after loading the view.
+    _firstLaunch = YES;
+    [self backToScaner:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -250,7 +252,15 @@
     [scanner setSymbology: ZBAR_I25
                    config: ZBAR_CFG_ENABLE
                        to: 0];       
-    [self presentViewController:reader animated:YES completion:nil];
+    [self presentViewController:reader animated:_firstLaunch? NO:YES completion:^{
+        if (_firstLaunch)
+        {
+            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Storyboard_iphone" bundle:nil];
+            UIViewController *loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginController"];
+            [reader presentModalViewController:loginController animated:NO];
+            _firstLaunch = NO;
+        }
+    }];
 }
 
 - (void) imagePickerController: (UIImagePickerController*) reader
@@ -271,9 +281,9 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {    
-    [picker dismissViewControllerAnimated:NO completion:^{
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }];
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Storyboard_iphone" bundle:nil];
+    UIViewController *loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginController"];
+    [picker presentModalViewController:loginController animated:YES];
 }
 
 - (IBAction)handleDone:(id)sender

@@ -83,18 +83,12 @@ NSString *const VendHQ_COM = @".vendhq.com";
     NSString *password = self.passwordTextField.text;    
     [[WebEngine sharedManager] configureCoreDataWithLogin:login
                                               andPassword:password];
-    [[WebEngine sharedManager] getProductsSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        
-        ZBarReaderViewController *reader = [ZBarReaderViewController new];
-        reader.readerDelegate = self;
-        reader.supportedOrientationsMask = ZBarOrientationMaskAll;        
-        ZBarImageScanner *scanner = reader.scanner;
-                [scanner setSymbology: ZBAR_I25
-                       config: ZBAR_CFG_ENABLE
-                           to: 0];        
-        [self presentViewController:reader animated:YES completion:nil];
-        [self performSegueWithIdentifier:@"Login" sender:nil];   
-             
+    [[WebEngine sharedManager] getProductsSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {       
+       
+        _storeName.text = VendHQ_COM;
+        _loginTextField.text = @"";
+        _passwordTextField.text = @"";
+        [self dismissViewControllerAnimated:YES completion:nil];
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
@@ -105,23 +99,5 @@ NSString *const VendHQ_COM = @".vendhq.com";
     }];
     
 }
-
-- (void) imagePickerController: (UIImagePickerController*) reader
- didFinishPickingMediaWithInfo: (NSDictionary*) info
-{
-    // ADD: get the decode results
-    id<NSFastEnumeration> results =
-    [info objectForKey: ZBarReaderControllerResults];
-    ZBarSymbol *symbol = nil;
-    for(symbol in results)
-        // EXAMPLE: just grab the first barcode
-        break;    
-    
-    NSString *sku = symbol.data;
-    CSCreateProduct *productController = [self.navigationController.viewControllers objectAtIndex:1];
-    [productController findProductWithSKU:sku];    
-    [reader dismissViewControllerAnimated:YES completion:nil];
-}
-
 
 @end

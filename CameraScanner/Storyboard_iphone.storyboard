@@ -8,24 +8,24 @@
         <!--Navigation Controller-->
         <scene sceneID="nXn-O0-JdI">
             <objects>
-                <navigationController definesPresentationContext="YES" id="RJs-pn-mgy" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="" definesPresentationContext="YES" id="RJs-pn-mgy" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9zg-cw-Rof">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="W1z-yh-o8u" kind="relationship" relationship="rootViewController" id="Tb8-o1-Ibg"/>
+                        <segue destination="Kum-xQ-Y49" kind="relationship" relationship="rootViewController" id="DPi-CB-aZN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ya-Cl-4nM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1086" y="777"/>
+            <point key="canvasLocation" x="-1517" y="531"/>
         </scene>
         <!--Login Controller - Login-->
         <scene sceneID="5Fa-Px-R6p">
             <objects>
-                <viewController id="W1z-yh-o8u" customClass="CSLoginController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginController" id="W1z-yh-o8u" customClass="CSLoginController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ivi-2r-nrC">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jfk-lf-9Vf">
@@ -81,12 +81,11 @@
                         <outlet property="loginTextField" destination="jzW-Rc-K0J" id="A1z-R2-YQS"/>
                         <outlet property="passwordTextField" destination="5PB-iY-eXj" id="cUg-q8-Wti"/>
                         <outlet property="storeName" destination="VsM-bH-r7r" id="F6G-bn-j9b"/>
-                        <segue destination="Kum-xQ-Y49" kind="custom" identifier="Login" customClass="CSLoginSegue" id="yc0-av-9hU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bjx-Ki-YYd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-658" y="777"/>
+            <point key="canvasLocation" x="-664" y="525"/>
         </scene>
         <!--Scanner Controller - Scanner-->
         <scene sceneID="Jfw-kD-5iA">
@@ -108,7 +107,7 @@
             <objects>
                 <viewController id="Kum-xQ-Y49" customClass="CSCreateProduct" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Eu1-JO-kLs">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="eLA-H7-sK9">
@@ -199,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YNF-0a-P29" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-125" y="184"/>
+            <point key="canvasLocation" x="-1101" y="531"/>
         </scene>
         <!--Table View Controller - Outlet-->
         <scene sceneID="VvZ-nF-8s8">
