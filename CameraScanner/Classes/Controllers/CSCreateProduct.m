@@ -10,20 +10,21 @@
 
 #import "Product.h"
 #import "Outlet.h"
-
+#import "ZBarReaderViewController.h"
 #import "WebEngine.h"
 #import "CSTextFieldCell.h"
 
 #import "NSString+Validate.h"
 #import "UIView+FindFirstResponder.h"
 
-@interface CSCreateProduct () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
+@interface CSCreateProduct () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, ZBarReaderDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic, strong) Product *scannedProduct;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *handle;
 @property (nonatomic, copy) NSString *price;
+
 
 - (IBAction)handleDone:(id)sender;
 
@@ -43,14 +44,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	// Do any additional setup after loading the view.    
     
-    self.navigationItem.title = _itemForEdit ? NSLocalizedString(@"Edit Item", @"Edit Item") : NSLocalizedString(@"Create Item", @"Create Item");
-    
-    _sku = _itemForEdit ? _itemForEdit.sku : _sku;
-    _name = _itemForEdit ? _itemForEdit.name : @"";
-    _handle =  _itemForEdit ? _itemForEdit.handle : @"";
-    _price = _itemForEdit ? [NSString stringWithFormat:@"%0.2f", (_itemForEdit.price.floatValue + _itemForEdit.tax.floatValue)] : @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,6 +53,62 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)findProductWithSKU:(NSString *)sku
+{
+    _sku = nil;
+    _itemForEdit = nil;
+    
+    __weak MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;    
+    
+    __weak typeof(self) weakSelf = self;
+    [[WebEngine sharedManager] getProductBySKU:sku success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog(@"%@", mappingResult.firstObject);
+        if (!mappingResult.firstObject)
+        {
+            _sku = sku;
+            [self reloadTable];
+        }
+        else
+        {
+            weakSelf.itemForEdit = mappingResult.firstObject;
+            [self reloadTable];
+        }
+        [hud hide:YES];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", @"Warning")
+                                    message:error.localizedDescription
+                                   delegate:nil
+                          cancelButtonTitle:NSLocalizedString(@"Ok", @"Ok")
+                          otherButtonTitles:nil] show];
+        
+        TFLog(@"%@", error);
+        
+        weakSelf.itemForEdit = [Product findFirstByAttribute:@"sku" withValue:sku];
+       
+        if (!_itemForEdit)
+            _sku = sku;
+        
+        [self reloadTable];
+        
+        [hud hide:YES];
+        
+    }];
+    
+    
+}
+
+- (void)reloadTable
+{
+    self.navigationItem.title = _itemForEdit ? NSLocalizedString(@"Edit Item", @"Edit Item") : NSLocalizedString(@"Create Item", @"Create Item");
+    _sku = _itemForEdit ? _itemForEdit.sku : _sku;
+    _name = _itemForEdit ? _itemForEdit.name : @"";
+    _handle =  _itemForEdit ? _itemForEdit.handle : @"";
+    _price = _itemForEdit ? [NSString stringWithFormat:@"%0.2f", (_itemForEdit.price.floatValue + _itemForEdit.tax.floatValue)] : @"";
+    [self.tableView reloadData];
+}
+
 
 #pragma mark - TableView DataSource
 
@@ -188,6 +239,43 @@
     }
 }
 
+#pragma mark - scanner
+
+- (IBAction)backToScaner:(id)sender
+{
+    ZBarReaderViewController *reader = [ZBarReaderViewController new];
+    reader.readerDelegate = self;
+    reader.supportedOrientationsMask = ZBarOrientationMaskAll;    
+    ZBarImageScanner *scanner = reader.scanner;   
+    [scanner setSymbology: ZBAR_I25
+                   config: ZBAR_CFG_ENABLE
+                       to: 0];       
+    [self presentViewController:reader animated:YES completion:nil];
+}
+
+- (void) imagePickerController: (UIImagePickerController*) reader
+ didFinishPickingMediaWithInfo: (NSDictionary*) info
+{
+    // ADD: get the decode results
+    id<NSFastEnumeration> results =
+    [info objectForKey: ZBarReaderControllerResults];
+    ZBarSymbol *symbol = nil;
+    for(symbol in results)
+        // EXAMPLE: just grab the first barcode
+        break;
+    
+    NSString *sku = symbol.data;
+    [self findProductWithSKU:sku];
+    [reader dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{    
+    [picker dismissViewControllerAnimated:NO completion:^{
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
+}
+
 - (IBAction)handleDone:(id)sender
 {
     [self.tableView resignAllResponder];
@@ -195,7 +283,7 @@
     {
         [[[UIAlertView alloc] initWithTitle:@"Error"
                                     message:@"Name should be not empty"
-                                   delegate:self
+                                   delegate:nil
                           cancelButtonTitle:@"Ok"
                           otherButtonTitles:nil] show];
     }
@@ -203,7 +291,7 @@
     {
         [[[UIAlertView alloc] initWithTitle:@"Error"
                                     message:@"Handle should be not empty"
-                                   delegate:self
+                                   delegate:nil
                           cancelButtonTitle:@"Ok"
                           otherButtonTitles:nil] show];
     }
@@ -211,7 +299,7 @@
     {
         [[[UIAlertView alloc] initWithTitle:@"Error"
                                     message:@"Retail price should be numeric"
-                                   delegate:self
+                                   delegate:nil
                           cancelButtonTitle:@"Ok"
                           otherButtonTitles:nil] show];
     }
@@ -278,7 +366,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self backToScaner:nil];
 }
 
 

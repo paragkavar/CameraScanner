@@ -7,13 +7,15 @@
 //
 
 #import "CSLoginController.h"
+#import "ZBarReaderViewController.h"
+#import "CSCreateProduct.h"
 
 #define DEBUG_LOGIN YES
 
 NSString *const VendHQ_COM = @".vendhq.com";
 
-@interface CSLoginController () <UITextFieldDelegate>
-
+@interface CSLoginController () <UITextFieldDelegate, ZBarReaderDelegate>
+@property (nonatomic, copy) NSString *sku;
 @end
 
 @implementation CSLoginController
@@ -77,8 +79,49 @@ NSString *const VendHQ_COM = @".vendhq.com";
 - (IBAction)handleLogin:(id)sender {
     
     VEND_STORE_API = [NSURL URLWithString:[NSString stringWithFormat:@"https://%@/api/", _storeName.text]];
-    
-    [self performSegueWithIdentifier:@"Login" sender:sender];
+    NSString *login = self.loginTextField.text;
+    NSString *password = self.passwordTextField.text;    
+    [[WebEngine sharedManager] configureCoreDataWithLogin:login
+                                              andPassword:password];
+    [[WebEngine sharedManager] getProductsSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+        ZBarReaderViewController *reader = [ZBarReaderViewController new];
+        reader.readerDelegate = self;
+        reader.supportedOrientationsMask = ZBarOrientationMaskAll;        
+        ZBarImageScanner *scanner = reader.scanner;
+                [scanner setSymbology: ZBAR_I25
+                       config: ZBAR_CFG_ENABLE
+                           to: 0];        
+        [self presentViewController:reader animated:YES completion:nil];
+        [self performSegueWithIdentifier:@"Login" sender:nil];   
+             
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                                    message:NSLocalizedString(@"The store name, e-mail or password you entered is incorrect", nil)
+                                   delegate:nil
+                          cancelButtonTitle:NSLocalizedString(@"Ok", @"Ok")
+                          otherButtonTitles:nil] show];
+    }];
     
 }
+
+- (void) imagePickerController: (UIImagePickerController*) reader
+ didFinishPickingMediaWithInfo: (NSDictionary*) info
+{
+    // ADD: get the decode results
+    id<NSFastEnumeration> results =
+    [info objectForKey: ZBarReaderControllerResults];
+    ZBarSymbol *symbol = nil;
+    for(symbol in results)
+        // EXAMPLE: just grab the first barcode
+        break;    
+    
+    NSString *sku = symbol.data;
+    CSCreateProduct *productController = [self.navigationController.viewControllers objectAtIndex:1];
+    [productController findProductWithSKU:sku];    
+    [reader dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 @end

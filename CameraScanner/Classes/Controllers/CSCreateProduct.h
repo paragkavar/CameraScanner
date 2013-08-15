@@ -14,6 +14,7 @@
 
 @property (nonatomic, copy) NSString *sku;
 @property (nonatomic, strong) Product *itemForEdit;
-
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (void)findProductWithSKU:(NSString *)sku;
+- (IBAction)backToScaner:(id)sender;
 @end
