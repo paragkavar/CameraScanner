@@ -19,13 +19,10 @@
 
 @interface CSCreateProduct () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, ZBarReaderDelegate>
 
-
-@property (nonatomic, strong) Product *scannedProduct;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *handle;
 @property (nonatomic, copy) NSString *price;
 @property (nonatomic) BOOL firstLaunch;
-
 
 - (IBAction)handleDone:(id)sender;
 
@@ -96,9 +93,7 @@
         
         [hud hide:YES];
         
-    }];
-    
-    
+    }];    
 }
 
 - (void)reloadTable
@@ -110,7 +105,6 @@
     _price = _itemForEdit ? [NSString stringWithFormat:@"%0.2f", (_itemForEdit.price.floatValue + _itemForEdit.tax.floatValue)] : @"";
     [self.tableView reloadData];
 }
-
 
 #pragma mark - TableView DataSource
 
@@ -255,9 +249,7 @@
     [self presentViewController:reader animated:_firstLaunch? NO:YES completion:^{
         if (_firstLaunch)
         {
-            UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Storyboard_iphone" bundle:nil];
-            UIViewController *loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginController"];
-            [reader presentModalViewController:loginController animated:NO];
+            [self showLoginOnViewController:reader];
             _firstLaunch = NO;
         }
     }];
@@ -281,9 +273,14 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {    
+    [self showLoginOnViewController:picker];
+}
+
+- (void) showLoginOnViewController: (UIViewController *) controller
+{
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Storyboard_iphone" bundle:nil];
     UIViewController *loginController = [storyboard instantiateViewControllerWithIdentifier:@"loginController"];
-    [picker presentModalViewController:loginController animated:YES];
+    [controller presentModalViewController:loginController animated:NO];
 }
 
 - (IBAction)handleDone:(id)sender
@@ -327,7 +324,7 @@
                                            delegate:self
                                   cancelButtonTitle:@"Ok"
                                   otherButtonTitles:nil] show];
-               // [self.navigationController popViewControllerAnimated:YES];
+                
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 [[[UIAlertView alloc] initWithTitle:@"Error"
                                             message:error.localizedDescription
@@ -351,8 +348,7 @@
                                             message:NSLocalizedString(@"The Item was added in your store", @"The Item was added in your store")
                                            delegate:self
                                   cancelButtonTitle:@"Ok"
-                                  otherButtonTitles:nil] show];
-                //[self.navigationController popViewControllerAnimated:YES];
+                                  otherButtonTitles:nil] show];               
                 
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 [[[UIAlertView alloc] initWithTitle:@"Error"
@@ -378,8 +374,6 @@
 {
     [self backToScaner:nil];
 }
-
-
 
 - (void)viewDidUnload {
     [self setTableView:nil];

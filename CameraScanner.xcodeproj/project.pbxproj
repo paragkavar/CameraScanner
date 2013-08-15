@@ -15,7 +15,6 @@
 		842BF4DD1787ABC00066945A /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 842BF4DB1787ABC00066945A /* libTestFlight.a */; };
 		842BF4DF1787ADB10066945A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 842BF4DE1787ADB10066945A /* libz.dylib */; };
 		8445A03B17861B2800D52FC8 /* CSCreateProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 8445A03A17861B2800D52FC8 /* CSCreateProduct.m */; };
-		8445A03E17861B5900D52FC8 /* CSProductDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 8445A03D17861B5900D52FC8 /* CSProductDetail.m */; };
 		849DB4FD17A9AD6F004B4A5D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849DB4FC17A9AD6F004B4A5D /* SystemConfiguration.framework */; };
 		849DB50017A9B8B7004B4A5D /* NSURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DB4FF17A9B8B7004B4A5D /* NSURLParser.m */; };
 		84D6C5161784881E004DB9C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D6C5151784881E004DB9C2 /* UIKit.framework */; };
@@ -41,10 +40,6 @@
 		84D6C56617848E56004DB9C2 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D6C56517848E56004DB9C2 /* libiconv.dylib */; };
 		84D6C56817848E7D004DB9C2 /* Storyboard_iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D6C56717848E7D004DB9C2 /* Storyboard_iphone.storyboard */; };
 		84D6C56C17849D9B004DB9C2 /* CSLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C56B17849D9B004DB9C2 /* CSLoginController.m */; };
-		84D6C56F17849DB0004DB9C2 /* CSScannerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C56E17849DB0004DB9C2 /* CSScannerController.m */; };
-		84D6C57217849DED004DB9C2 /* CSProductsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C57117849DED004DB9C2 /* CSProductsController.m */; };
-		84D6C57517849E0B004DB9C2 /* CSSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C57417849E0B004DB9C2 /* CSSettingsController.m */; };
-		84D6C57917849EC9004DB9C2 /* CSLoginSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C57817849EC9004DB9C2 /* CSLoginSegue.m */; };
 		84D6C57D17849F0A004DB9C2 /* WebEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C57C17849F0A004DB9C2 /* WebEngine.m */; };
 		84D6C5891784AB91004DB9C2 /* NSEntityDescription+RKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C5841784AB91004DB9C2 /* NSEntityDescription+RKAdditions.m */; };
 		84D6C58A1784AB91004DB9C2 /* NSManagedObject+ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C5861784AB91004DB9C2 /* NSManagedObject+ActiveRecord.m */; };
@@ -55,7 +50,7 @@
 		214EAF6338174B3DB606A42D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8415A91E17B5004E00A5013E /* Outlet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Outlet.h; path = Classes/CoreData/Outlet.h; sourceTree = "<group>"; };
 		8415A91F17B5004E00A5013E /* Outlet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Outlet.m; path = Classes/CoreData/Outlet.m; sourceTree = "<group>"; };
-		8415A92117B8FC9700A5013E /* CameraScanner 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CameraScanner 3.xcdatamodel"; sourceTree = "<group>"; };
+		8415A92117B8FC9700A5013E /* CameraScanner 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CameraScanner 3.xcdatamodel"; sourceTree = "<group>"; };
 		8415A92217B8FCE500A5013E /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = Classes/CoreData/Product.h; sourceTree = "<group>"; };
 		8415A92317B8FCE500A5013E /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = Classes/CoreData/Product.m; sourceTree = "<group>"; };
 		842BF4D417879A910066945A /* CSTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSTextFieldCell.h; path = Classes/Cells/CSTextFieldCell.h; sourceTree = "<group>"; };
@@ -67,8 +62,6 @@
 		842BF4DE1787ADB10066945A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		8445A03917861B2800D52FC8 /* CSCreateProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCreateProduct.h; path = Classes/Controllers/CSCreateProduct.h; sourceTree = "<group>"; };
 		8445A03A17861B2800D52FC8 /* CSCreateProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCreateProduct.m; path = Classes/Controllers/CSCreateProduct.m; sourceTree = "<group>"; };
-		8445A03C17861B5900D52FC8 /* CSProductDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSProductDetail.h; path = Classes/Controllers/CSProductDetail.h; sourceTree = "<group>"; };
-		8445A03D17861B5900D52FC8 /* CSProductDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSProductDetail.m; path = Classes/Controllers/CSProductDetail.m; sourceTree = "<group>"; };
 		8469FC2717B4FB8000AE6B73 /* CameraScanner 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CameraScanner 2.xcdatamodel"; sourceTree = "<group>"; };
 		849DB4FC17A9AD6F004B4A5D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		849DB4FE17A9B8B7004B4A5D /* NSURLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSURLParser.h; path = Classes/Network/NSURLParser.h; sourceTree = "<group>"; };
@@ -121,14 +114,6 @@
 		84D6C56717848E7D004DB9C2 /* Storyboard_iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_iphone.storyboard; sourceTree = "<group>"; };
 		84D6C56A17849D9B004DB9C2 /* CSLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLoginController.h; path = Classes/Controllers/CSLoginController.h; sourceTree = "<group>"; };
 		84D6C56B17849D9B004DB9C2 /* CSLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLoginController.m; path = Classes/Controllers/CSLoginController.m; sourceTree = "<group>"; };
-		84D6C56D17849DB0004DB9C2 /* CSScannerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSScannerController.h; path = Classes/Controllers/CSScannerController.h; sourceTree = "<group>"; };
-		84D6C56E17849DB0004DB9C2 /* CSScannerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSScannerController.m; path = Classes/Controllers/CSScannerController.m; sourceTree = "<group>"; };
-		84D6C57017849DED004DB9C2 /* CSProductsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSProductsController.h; path = Classes/Controllers/CSProductsController.h; sourceTree = "<group>"; };
-		84D6C57117849DED004DB9C2 /* CSProductsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSProductsController.m; path = Classes/Controllers/CSProductsController.m; sourceTree = "<group>"; };
-		84D6C57317849E0B004DB9C2 /* CSSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSettingsController.h; path = Classes/Controllers/CSSettingsController.h; sourceTree = "<group>"; };
-		84D6C57417849E0B004DB9C2 /* CSSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSettingsController.m; path = Classes/Controllers/CSSettingsController.m; sourceTree = "<group>"; };
-		84D6C57717849EC9004DB9C2 /* CSLoginSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLoginSegue.h; path = Classes/Segues/CSLoginSegue.h; sourceTree = "<group>"; };
-		84D6C57817849EC9004DB9C2 /* CSLoginSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLoginSegue.m; path = Classes/Segues/CSLoginSegue.m; sourceTree = "<group>"; };
 		84D6C57B17849F0A004DB9C2 /* WebEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebEngine.h; path = Classes/Network/WebEngine.h; sourceTree = "<group>"; };
 		84D6C57C17849F0A004DB9C2 /* WebEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebEngine.m; path = Classes/Network/WebEngine.m; sourceTree = "<group>"; };
 		84D6C5831784AB91004DB9C2 /* NSEntityDescription+RKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSEntityDescription+RKAdditions.h"; sourceTree = "<group>"; };
@@ -227,7 +212,6 @@
 				84D6C5821784AB91004DB9C2 /* Categories */,
 				84D6C57E1784A3CD004DB9C2 /* CoreData */,
 				84D6C57A17849EDF004DB9C2 /* Network */,
-				84D6C57617849EA3004DB9C2 /* Segues */,
 				84D6C5261784881E004DB9C2 /* AppDelegate.h */,
 				84D6C5271784881E004DB9C2 /* AppDelegate.m */,
 				84D6C569178490DF004DB9C2 /* Controllers */,
@@ -324,27 +308,10 @@
 			children = (
 				84D6C56A17849D9B004DB9C2 /* CSLoginController.h */,
 				84D6C56B17849D9B004DB9C2 /* CSLoginController.m */,
-				84D6C56D17849DB0004DB9C2 /* CSScannerController.h */,
-				84D6C56E17849DB0004DB9C2 /* CSScannerController.m */,
-				84D6C57017849DED004DB9C2 /* CSProductsController.h */,
-				84D6C57117849DED004DB9C2 /* CSProductsController.m */,
-				84D6C57317849E0B004DB9C2 /* CSSettingsController.h */,
-				84D6C57417849E0B004DB9C2 /* CSSettingsController.m */,
 				8445A03917861B2800D52FC8 /* CSCreateProduct.h */,
 				8445A03A17861B2800D52FC8 /* CSCreateProduct.m */,
-				8445A03C17861B5900D52FC8 /* CSProductDetail.h */,
-				8445A03D17861B5900D52FC8 /* CSProductDetail.m */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		84D6C57617849EA3004DB9C2 /* Segues */ = {
-			isa = PBXGroup;
-			children = (
-				84D6C57717849EC9004DB9C2 /* CSLoginSegue.h */,
-				84D6C57817849EC9004DB9C2 /* CSLoginSegue.m */,
-			);
-			name = Segues;
 			sourceTree = "<group>";
 		};
 		84D6C57A17849EDF004DB9C2 /* Network */ = {
@@ -492,16 +459,11 @@
 				84D6C5281784881E004DB9C2 /* AppDelegate.m in Sources */,
 				84D6C5311784881E004DB9C2 /* CameraScanner.xcdatamodeld in Sources */,
 				84D6C56C17849D9B004DB9C2 /* CSLoginController.m in Sources */,
-				84D6C56F17849DB0004DB9C2 /* CSScannerController.m in Sources */,
-				84D6C57217849DED004DB9C2 /* CSProductsController.m in Sources */,
-				84D6C57517849E0B004DB9C2 /* CSSettingsController.m in Sources */,
-				84D6C57917849EC9004DB9C2 /* CSLoginSegue.m in Sources */,
 				84D6C57D17849F0A004DB9C2 /* WebEngine.m in Sources */,
 				84D6C5891784AB91004DB9C2 /* NSEntityDescription+RKAdditions.m in Sources */,
 				84D6C58A1784AB91004DB9C2 /* NSManagedObject+ActiveRecord.m in Sources */,
 				84D6C58B1784AB91004DB9C2 /* UIView+FindFirstResponder.m in Sources */,
 				8445A03B17861B2800D52FC8 /* CSCreateProduct.m in Sources */,
-				8445A03E17861B5900D52FC8 /* CSProductDetail.m in Sources */,
 				842BF4D617879A910066945A /* CSTextFieldCell.m in Sources */,
 				842BF4D91787A3DD0066945A /* NSString+Validate.m in Sources */,
 				849DB50017A9B8B7004B4A5D /* NSURLParser.m in Sources */,
