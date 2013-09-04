@@ -118,7 +118,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) return _itemForEdit ? 6 : 6;
+    if (section == 0) return _itemForEdit ? 7 : 6;
     if (section == 1) return _itemForEdit.inventory.count;
     
     return 0;
@@ -133,7 +133,9 @@
         switch (indexPath.row) {
             case 0:
                 cell.textField.text = _sku;
-                cell.textField.enabled = NO;
+                cell.textField.returnKeyType = UIReturnKeyNext;
+                if (_itemForEdit)
+                    cell.textField.enabled = NO;
                 break;
             case 1:
                 cell.textField.text = _name;
@@ -160,6 +162,11 @@
                 cell.textField.text = _supplierName;
                 cell.textField.placeholder = NSLocalizedString(@"Supplier name", @"Supplier name");
                 cell.textField.enabled = NO;
+                break;
+            case 6:
+                cell.textField.text = @"Delete";
+                cell.textField.enabled = NO;
+                break;
             default:
                 break;
         }
@@ -203,6 +210,16 @@
         if (indexPath.row == 5)
         {
             [self performSegueWithIdentifier:@"supplier" sender:self];
+        }
+        if (indexPath.row == 6)
+        {            
+            [[WebEngine sharedManager] deleteProduct:_itemForEdit success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                NSLog(@"deleted");
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                NSLog(@"delete fail");
+            }];
+            [self backToScaner:nil];
+                                               
         }
     }
 }
@@ -251,7 +268,18 @@
     // as appropriate to get the textValue and assign it to a variable, for instance:
     if (indexPath.section == 0)
     {
-        if (indexPath.row == 1) self.name = textField.text;
+        if (indexPath.row == 0) _sku = textField.text;
+        if (indexPath.row == 1){
+            self.name = textField.text;
+            CSTextFieldCell *prevCell = (CSTextFieldCell *) [[textField superview] superview];            
+            NSIndexPath *prevIndexPath = [_tableView indexPathForCell:prevCell];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:prevIndexPath.row+1 inSection:prevIndexPath.section];            
+            CSTextFieldCell *cell = (CSTextFieldCell *)[_tableView cellForRowAtIndexPath:indexPath];
+            NSArray* words = [textField.text componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceCharacterSet]];
+            NSString* nospacestring = [words componentsJoinedByString:@""];
+            if ([cell.textField.text isEqualToString:@""])
+                cell.textField.text = [nospacestring lowercaseString];
+        }
         if (indexPath.row == 2) self.handle = textField.text;
         if (indexPath.row == 3) self.price = textField.text;
     }
