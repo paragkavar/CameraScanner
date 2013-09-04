@@ -9,6 +9,7 @@
 #import "CSLoginController.h"
 #import "ZBarReaderViewController.h"
 #import "CSCreateProduct.h"
+#import "Tax.h"
 
 #define DEBUG_LOGIN YES
 
@@ -83,6 +84,15 @@ NSString *const VendHQ_COM = @".vendhq.com";
     NSString *password = self.passwordTextField.text;    
     [[WebEngine sharedManager] configureCoreDataWithLogin:login
                                               andPassword:password];
+    [[WebEngine sharedManager] getTaxesSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog(@"%@", [Tax findAll]);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                                    message:NSLocalizedString(@"The store name, e-mail or password you entered is incorrect", nil)
+                                   delegate:nil
+                          cancelButtonTitle:NSLocalizedString(@"Ok", @"Ok")
+                          otherButtonTitles:nil] show];
+    }];
     [[WebEngine sharedManager] getProductsSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {       
        
         _storeName.text = VendHQ_COM;

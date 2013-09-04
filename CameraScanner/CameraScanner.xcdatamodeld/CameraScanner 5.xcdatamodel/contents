@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12C3103" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Contact" syncable="YES">
+        <attribute name="company_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fax" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="physical_address1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="physical_address2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="physical_city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="physical_country_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="physical_postcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="physical_state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="physical_suburb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postal_address1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postal_address2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postal_city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postal_country_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postal_postcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postal_state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postal_suburb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="twitter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="supplier" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Supplier" inverseName="contact" inverseEntity="Supplier" syncable="YES"/>
+    </entity>
+    <entity name="Outlet" representedClassName="Outlet" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="ids" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reorderPoint" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="restockLevel" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="product" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="inventory" inverseEntity="Product" syncable="YES"/>
+    </entity>
+    <entity name="Product" representedClassName="Product" syncable="YES">
+        <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="brandName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deletedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="handle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ids" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="retailPrice" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="sku" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="sourceId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="supplierName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tags" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tax" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="taxName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taxRate" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="inventory" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Outlet" inverseName="product" inverseEntity="Outlet" syncable="YES"/>
+    </entity>
+    <entity name="Supplier" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="retailer_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="supplierDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contact" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="supplier" inverseEntity="Contact" syncable="YES"/>
+    </entity>
+    <entity name="Tax" representedClassName="Tax" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rate" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Outlet" positionX="-785" positionY="-826" width="128" height="133"/>
+        <element name="Product" positionX="-954" positionY="-855" width="128" height="328"/>
+        <element name="Tax" positionX="-783" positionY="-664" width="128" height="88"/>
+        <element name="Supplier" positionX="-614" positionY="-873" width="128" height="133"/>
+        <element name="Contact" positionX="-443" positionY="-877" width="128" height="403"/>
+    </elements>
+</model>

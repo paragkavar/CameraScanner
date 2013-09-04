@@ -44,6 +44,8 @@
 		84D6C5891784AB91004DB9C2 /* NSEntityDescription+RKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C5841784AB91004DB9C2 /* NSEntityDescription+RKAdditions.m */; };
 		84D6C58A1784AB91004DB9C2 /* NSManagedObject+ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C5861784AB91004DB9C2 /* NSManagedObject+ActiveRecord.m */; };
 		84D6C58B1784AB91004DB9C2 /* UIView+FindFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C5881784AB91004DB9C2 /* UIView+FindFirstResponder.m */; };
+		E752CCD117D728D100DE7741 /* Tax.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCD017D728D100DE7741 /* Tax.m */; };
+		E752CCD417D73AA600DE7741 /* TaxesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCD317D73AA600DE7741 /* TaxesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +125,12 @@
 		84D6C5871784AB91004DB9C2 /* UIView+FindFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindFirstResponder.h"; sourceTree = "<group>"; };
 		84D6C5881784AB91004DB9C2 /* UIView+FindFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindFirstResponder.m"; sourceTree = "<group>"; };
 		8741B48D3F124EE4BA96DEC4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		E752CCCE17D7248F00DE7741 /* CameraScanner 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CameraScanner 4.xcdatamodel"; sourceTree = "<group>"; };
+		E752CCCF17D728D100DE7741 /* Tax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tax.h; path = Classes/CoreData/Tax.h; sourceTree = "<group>"; };
+		E752CCD017D728D100DE7741 /* Tax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tax.m; path = Classes/CoreData/Tax.m; sourceTree = "<group>"; };
+		E752CCD217D73AA600DE7741 /* TaxesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaxesViewController.h; path = Classes/Controllers/TaxesViewController.h; sourceTree = "<group>"; };
+		E752CCD317D73AA600DE7741 /* TaxesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaxesViewController.m; path = Classes/Controllers/TaxesViewController.m; sourceTree = "<group>"; };
+		E752CCD517D7429400DE7741 /* CameraScanner 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CameraScanner 5.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +318,8 @@
 				84D6C56B17849D9B004DB9C2 /* CSLoginController.m */,
 				8445A03917861B2800D52FC8 /* CSCreateProduct.h */,
 				8445A03A17861B2800D52FC8 /* CSCreateProduct.m */,
+				E752CCD217D73AA600DE7741 /* TaxesViewController.h */,
+				E752CCD317D73AA600DE7741 /* TaxesViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -332,6 +342,8 @@
 				8415A92317B8FCE500A5013E /* Product.m */,
 				8415A91E17B5004E00A5013E /* Outlet.h */,
 				8415A91F17B5004E00A5013E /* Outlet.m */,
+				E752CCCF17D728D100DE7741 /* Tax.h */,
+				E752CCD017D728D100DE7741 /* Tax.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -469,6 +481,8 @@
 				849DB50017A9B8B7004B4A5D /* NSURLParser.m in Sources */,
 				8415A92017B5004E00A5013E /* Outlet.m in Sources */,
 				8415A92417B8FCE500A5013E /* Product.m in Sources */,
+				E752CCD117D728D100DE7741 /* Tax.m in Sources */,
+				E752CCD417D73AA600DE7741 /* TaxesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,11 +627,13 @@
 		84D6C52F1784881E004DB9C2 /* CameraScanner.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E752CCD517D7429400DE7741 /* CameraScanner 5.xcdatamodel */,
+				E752CCCE17D7248F00DE7741 /* CameraScanner 4.xcdatamodel */,
 				8415A92117B8FC9700A5013E /* CameraScanner 3.xcdatamodel */,
 				8469FC2717B4FB8000AE6B73 /* CameraScanner 2.xcdatamodel */,
 				84D6C5301784881E004DB9C2 /* CameraScanner.xcdatamodel */,
 			);
-			currentVersion = 8415A92117B8FC9700A5013E /* CameraScanner 3.xcdatamodel */;
+			currentVersion = E752CCCE17D7248F00DE7741 /* CameraScanner 4.xcdatamodel */;
 			path = CameraScanner.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

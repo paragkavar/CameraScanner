@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12C3103" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Outlet" representedClassName="Outlet" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="ids" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reorderPoint" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="restockLevel" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="product" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="inventory" inverseEntity="Product" syncable="YES"/>
+    </entity>
+    <entity name="Product" representedClassName="Product" syncable="YES">
+        <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="brandName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deletedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="handle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ids" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="retailPrice" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="sku" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="sourceId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="supplierName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tags" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tax" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="taxName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taxRate" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="inventory" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Outlet" inverseName="product" inverseEntity="Outlet" syncable="YES"/>
+        <relationship name="productTax" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Tax" inverseName="products" inverseEntity="Tax" syncable="YES"/>
+    </entity>
+    <entity name="Tax" representedClassName="Tax" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rate" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Product" inverseName="productTax" inverseEntity="Product" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Outlet" positionX="-639" positionY="-720" width="128" height="133"/>
+        <element name="Product" positionX="-954" positionY="-855" width="128" height="343"/>
+        <element name="Tax" positionX="-713" positionY="-531" width="128" height="103"/>
+    </elements>
+</model>

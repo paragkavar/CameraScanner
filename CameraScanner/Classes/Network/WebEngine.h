@@ -20,6 +20,7 @@ extern NSString *const VendCredentialsPassword;
 extern NSString *const VendCredentialsStore;
 
 @class Product;
+@class Tax;
 
 @interface WebEngine : NSObject
 
@@ -44,6 +45,12 @@ extern NSString *const VendCredentialsStore;
 - (void)deleteProduct:(Product *)product
               success:(WebEngineSuccess)success
               failure:(WebEngineFaluire)failure;
+
+- (void) getTaxesSuccess: (WebEngineSuccess)success
+                 failure: (WebEngineFaluire)failure;
+- (void) postTax: (Tax *) tax
+         success:(WebEngineSuccess)success
+         failure:(WebEngineFaluire)failure;
 
 - (void)logout;
 

@@ -10,6 +10,7 @@
 
 #import "WebEngine.h"
 #import "Product.h"
+#import "Tax.h"
 #import <NSData+Base64/NSData+Base64.h>
 #import "NSURLParser.h"
 
@@ -142,6 +143,14 @@ NSURL *VEND_STORE_API = nil;
     return mapping;
 }
 
++ (RKEntityMapping *)taxMappingInManagedObjectStore:(RKManagedObjectStore *)store {
+    
+    RKEntityMapping *taxMapping = [RKEntityMapping mappingForEntityForName:@"Tax" inManagedObjectStore:store];
+    [taxMapping setIdentificationAttributes:@[@"id"]];
+    [taxMapping addAttributeMappingsFromArray:@[@"id", @"name", @"rate"]];
+    return taxMapping;
+}
+
 
 
 - (void)configurateRouting {
@@ -175,14 +184,32 @@ NSURL *VEND_STORE_API = nil;
                                                                                       objectClass:[Product class]
                                                                                       rootKeyPath:nil];
     
+    RKEntityMapping *taxMapping = [WebEngine taxMappingInManagedObjectStore:_objectStore];
+
+    RKResponseDescriptor *taxGetRespDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taxMapping
+                                                                                         pathPattern:@"taxes"
+                                                                                             keyPath:@"taxes"
+                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *taxPostRespDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:taxMapping
+                                                                                         pathPattern:@"taxes"
+                                                                                             keyPath:@"tax"
+                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKRequestDescriptor *taxReqDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[taxMapping inverseMapping]
+                                                                                  objectClass:[Tax class]
+                                                                                  rootKeyPath:nil];
+    
+    
     [_objectManager addResponseDescriptorsFromArray:@[
          productRespDescriptor,
          productPostRespDescriptor,
-         productDeleteRespDescriptor
+         productDeleteRespDescriptor,
+         taxGetRespDescriptor,
+         taxPostRespDescriptor
      ]];
     
     [_objectManager addRequestDescriptorsFromArray:@[
-     productReqDescriptor
+         productReqDescriptor,
+         taxReqDescriptor
      ]];
     
     
@@ -286,6 +313,26 @@ NSURL *VEND_STORE_API = nil;
                       parameters:nil
                          success:success
                          failure:failure];
+}
+
+- (void) getTaxesSuccess: (WebEngineSuccess)success
+                 failure: (WebEngineFaluire)failure
+{
+    [_objectManager getObjectsAtPath:@"taxes"
+                          parameters:nil
+                             success:success
+                             failure:failure];
+}
+
+- (void) postTax: (Tax *) tax
+         success:(WebEngineSuccess)success
+         failure:(WebEngineFaluire)failure
+{
+    [_objectManager postObject:tax
+                          path:@"taxes"
+                    parameters:nil
+                       success:success
+                       failure:failure];
 }
 
 - (BOOL)hasInternet

@@ -185,6 +185,17 @@
     return nil;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == 4)
+        {
+            [self performSegueWithIdentifier:@"tax" sender:self];            
+        }
+    }
+}
+
 #pragma mark - TextField Delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
