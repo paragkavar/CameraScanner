@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Contact;
+@class Contact, Product;
 
 @interface Supplier : NSManagedObject
 
@@ -19,5 +19,14 @@
 @property (nonatomic, retain) NSString * source;
 @property (nonatomic, retain) NSString * supplierDescription;
 @property (nonatomic, retain) Contact *contact;
+@property (nonatomic, retain) NSSet *products;
+@end
+
+@interface Supplier (CoreDataGeneratedAccessors)
+
+- (void)addProductsObject:(Product *)value;
+- (void)removeProductsObject:(Product *)value;
+- (void)addProducts:(NSSet *)values;
+- (void)removeProducts:(NSSet *)values;
 
 @end

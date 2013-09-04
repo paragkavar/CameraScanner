@@ -9,14 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @class Product;
+@class Tax;
+@class Supplier;
 
 @interface CSCreateProduct : UIViewController
 
 @property (nonatomic, copy) NSString *sku;
 @property (nonatomic, strong) Product *itemForEdit;
+@property (nonatomic, strong) Tax *tax;
+@property (nonatomic, strong) Supplier *supplier;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, copy) NSString *taxName;
-@property (nonatomic, copy) NSString *supplierName;
+
 - (void)findProductWithSKU:(NSString *)sku;
 - (IBAction)backToScaner:(id)sender;
 @end

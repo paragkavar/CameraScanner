@@ -13,7 +13,8 @@
 @implementation Tax
 
 @dynamic id;
-@dynamic rate;
 @dynamic name;
+@dynamic rate;
+@dynamic products;
 
 @end

@@ -79,7 +79,7 @@
 {
     CSCreateProduct *productController = [self.navigationController.viewControllers objectAtIndex:0];
     Tax *tax = [_fetchedResultsController objectAtIndexPath:indexPath];
-    productController.taxName = tax.name;
+    productController.tax = tax;
     [productController.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }

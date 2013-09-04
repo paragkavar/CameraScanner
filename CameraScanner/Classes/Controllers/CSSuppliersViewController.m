@@ -77,7 +77,7 @@
 {
     CSCreateProduct *productController = [self.navigationController.viewControllers objectAtIndex:0];
     Supplier *supplier = [_fetchedResultsController objectAtIndexPath:indexPath];
-    productController.supplierName = supplier.name;
+    productController.supplier = supplier;
     [productController.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }

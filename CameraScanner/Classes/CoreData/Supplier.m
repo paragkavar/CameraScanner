@@ -8,6 +8,7 @@
 
 #import "Supplier.h"
 #import "Contact.h"
+#import "Product.h"
 
 
 @implementation Supplier
@@ -18,5 +19,6 @@
 @dynamic source;
 @dynamic supplierDescription;
 @dynamic contact;
+@dynamic products;
 
 @end

@@ -14,7 +14,16 @@
 @interface Tax : NSManagedObject
 
 @property (nonatomic, retain) NSString * id;
-@property (nonatomic, retain) NSNumber * rate;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * rate;
+@property (nonatomic, retain) NSSet *products;
 @end
 
+@interface Tax (CoreDataGeneratedAccessors)
+
+- (void)addProductsObject:(Product *)value;
+- (void)removeProductsObject:(Product *)value;
+- (void)addProducts:(NSSet *)values;
+- (void)removeProducts:(NSSet *)values;
+
+@end

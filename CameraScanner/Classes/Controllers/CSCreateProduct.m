@@ -9,6 +9,8 @@
 #import "CSCreateProduct.h"
 
 #import "Product.h"
+#import "Tax.h"
+#import "Supplier.h"
 #import "Outlet.h"
 #import "ZBarReaderViewController.h"
 #import "WebEngine.h"
@@ -104,24 +106,24 @@
     _name = _itemForEdit ? _itemForEdit.name : @"";
     _handle =  _itemForEdit ? _itemForEdit.handle : @"";
     _price = _itemForEdit ? [NSString stringWithFormat:@"%0.2f", (_itemForEdit.price.floatValue + _itemForEdit.tax.floatValue)] : @"";
-    _taxName = _itemForEdit ? _itemForEdit.taxName : @"";
-    _supplierName = _itemForEdit ? _itemForEdit.supplierName : @"";
-    [self.tableView reloadData];
+    _tax = _itemForEdit ? _itemForEdit.productTax : nil;
+    _supplier = _itemForEdit ? _itemForEdit.supplier : nil;
+    [self.tableView reloadData];     
 }
 
 #pragma mark - TableView DataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return (_itemForEdit != nil && _itemForEdit.inventory.count) ? 2 : 1;
+    return (_itemForEdit != nil && _itemForEdit.inventory.count) ? 4 : 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) return _itemForEdit ? 7 : 6;
-    if (section == 1) return _itemForEdit.inventory.count;
+    if (section == 0) return _itemForEdit ? 5 : 4;
+    if (section == 3) return _itemForEdit.inventory.count;
     
-    return 0;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -133,9 +135,8 @@
         switch (indexPath.row) {
             case 0:
                 cell.textField.text = _sku;
-                cell.textField.returnKeyType = UIReturnKeyNext;
-                if (_itemForEdit)
-                    cell.textField.enabled = NO;
+                cell.textField.returnKeyType = UIReturnKeyNext;                
+                cell.textField.enabled = _itemForEdit == nil;                
                 break;
             case 1:
                 cell.textField.text = _name;
@@ -152,18 +153,8 @@
                 cell.textField.placeholder = NSLocalizedString(@"Price", @"Price");
                 cell.textField.keyboardType = UIKeyboardTypeDecimalPad;
                 cell.textField.returnKeyType = UIReturnKeyDone;
-                break;
+                break;           
             case 4:
-                cell.textField.text = _taxName;
-                cell.textField.placeholder = NSLocalizedString(@"Tax name", @"Tax name");
-                cell.textField.enabled = NO;
-                break;
-            case 5:
-                cell.textField.text = _supplierName;
-                cell.textField.placeholder = NSLocalizedString(@"Supplier name", @"Supplier name");
-                cell.textField.enabled = NO;
-                break;
-            case 6:
                 cell.textField.text = @"Delete";
                 cell.textField.enabled = NO;
                 break;
@@ -173,7 +164,7 @@
         
         return cell;
     }
-    else
+    else if (indexPath.section == 3)
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InventoryCell" forIndexPath:indexPath];
         Outlet *outlet = [[_itemForEdit.inventory allObjects] objectAtIndex:indexPath.row];
@@ -181,6 +172,22 @@
         cell.textLabel.text = outlet.name;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", outlet.count.integerValue];
         
+        return cell;
+    }
+    else if (indexPath.section == 1)
+    {
+        CSTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        cell.textField.text = _tax.name;
+        cell.textField.placeholder = NSLocalizedString(@"Tax name", @"Tax name");
+        cell.textField.enabled = NO;
+        return cell;
+    }
+    else if (indexPath.section == 2)
+    {
+        CSTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        cell.textField.text = _supplier.name;
+        cell.textField.placeholder = NSLocalizedString(@"Supplier name", @"Supplier name");
+        cell.textField.enabled = NO;
         return cell;
     }
     
@@ -191,9 +198,17 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 1)
+    if (section == 3)
     {
         return NSLocalizedString(@"Inventory", nil);
+    }
+    if (section == 1)
+    {
+        return NSLocalizedString(@"Tax", nil);
+    }
+    if (section == 2)
+    {
+        return NSLocalizedString(@"Supplier", nil);
     }
     
     return nil;
@@ -204,14 +219,6 @@
     if (indexPath.section == 0)
     {
         if (indexPath.row == 4)
-        {
-            [self performSegueWithIdentifier:@"tax" sender:self];            
-        }
-        if (indexPath.row == 5)
-        {
-            [self performSegueWithIdentifier:@"supplier" sender:self];
-        }
-        if (indexPath.row == 6)
         {            
             [[WebEngine sharedManager] deleteProduct:_itemForEdit success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                 NSLog(@"deleted");
@@ -222,6 +229,15 @@
                                                
         }
     }
+    if (indexPath.section == 1)
+    {
+        [self performSegueWithIdentifier:@"tax" sender:self];
+    }
+    if (indexPath.section == 2)
+    {
+        [self performSegueWithIdentifier:@"supplier" sender:self];
+    }
+
 }
 
 #pragma mark - TextField Delegate
@@ -367,8 +383,10 @@
             _itemForEdit.name = self.name;
             _itemForEdit.handle = self.handle;
             _itemForEdit.retailPrice = @(self.price.floatValue);
-            _itemForEdit.taxName = _taxName;
-            _itemForEdit.supplierName = _supplierName;
+            _itemForEdit.taxName = _tax.name;
+            _itemForEdit.supplierName = _supplier.name;
+            _itemForEdit.productTax = _tax;
+            _itemForEdit.supplier = _supplier;
             
             [[WebEngine sharedManager] putProduct:_itemForEdit success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                 [[[UIAlertView alloc] initWithTitle:@"Store"
@@ -387,15 +405,17 @@
             }];
              
         }
-        else
+        else	
         {
             Product *newProduct = [Product createEntity];
             newProduct.name = _name;
             newProduct.handle = _handle;
             newProduct.retailPrice = @(_price.floatValue);
             newProduct.sku = _sku;
-            newProduct.taxName = _taxName;
-            newProduct.supplierName = _supplierName;
+            newProduct.taxName = _tax.name;
+            newProduct.supplierName = _supplier.name;
+            newProduct.productTax = _tax;
+            newProduct.supplier = _supplier;
             
             [[WebEngine sharedManager] postProduct:newProduct success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                 [[[UIAlertView alloc] initWithTitle:@"Store"

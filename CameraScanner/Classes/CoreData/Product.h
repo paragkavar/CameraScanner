@@ -2,14 +2,14 @@
 //  Product.h
 //  CameraScanner
 //
-//  Created by Rostislav Kobizskiy on 8/12/13.
+//  Created by Владимир on 04.09.13.
 //  Copyright (c) 2013 Rost's company. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Outlet;
+@class Outlet, Supplier, Tax;
 
 @interface Product : NSManagedObject
 
@@ -28,10 +28,12 @@
 @property (nonatomic, retain) NSString * supplierName;
 @property (nonatomic, retain) NSString * tags;
 @property (nonatomic, retain) NSNumber * tax;
-@property (nonatomic, retain) NSDate * updatedAt;
 @property (nonatomic, retain) NSString * taxName;
 @property (nonatomic, retain) NSNumber * taxRate;
+@property (nonatomic, retain) NSDate * updatedAt;
 @property (nonatomic, retain) NSSet *inventory;
+@property (nonatomic, retain) Tax *productTax;
+@property (nonatomic, retain) Supplier *supplier;
 @end
 
 @interface Product (CoreDataGeneratedAccessors)

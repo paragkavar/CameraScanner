@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6AB573B3D0E345E0841DAF8C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 214EAF6338174B3DB606A42D /* libPods.a */; };
 		8415A92017B5004E00A5013E /* Outlet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8415A91F17B5004E00A5013E /* Outlet.m */; };
-		8415A92417B8FCE500A5013E /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 8415A92317B8FCE500A5013E /* Product.m */; };
 		842BF4D617879A910066945A /* CSTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BF4D517879A910066945A /* CSTextFieldCell.m */; };
 		842BF4D91787A3DD0066945A /* NSString+Validate.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BF4D81787A3DD0066945A /* NSString+Validate.m */; };
 		842BF4DD1787ABC00066945A /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 842BF4DB1787ABC00066945A /* libTestFlight.a */; };
@@ -44,11 +43,12 @@
 		84D6C5891784AB91004DB9C2 /* NSEntityDescription+RKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C5841784AB91004DB9C2 /* NSEntityDescription+RKAdditions.m */; };
 		84D6C58A1784AB91004DB9C2 /* NSManagedObject+ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C5861784AB91004DB9C2 /* NSManagedObject+ActiveRecord.m */; };
 		84D6C58B1784AB91004DB9C2 /* UIView+FindFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C5881784AB91004DB9C2 /* UIView+FindFirstResponder.m */; };
-		E752CCD117D728D100DE7741 /* Tax.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCD017D728D100DE7741 /* Tax.m */; };
 		E752CCD417D73AA600DE7741 /* TaxesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCD317D73AA600DE7741 /* TaxesViewController.m */; };
 		E752CCDB17D7488800DE7741 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCDA17D7488800DE7741 /* Contact.m */; };
-		E752CCDE17D748BD00DE7741 /* Supplier.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCDD17D748BD00DE7741 /* Supplier.m */; };
 		E752CCE117D7513B00DE7741 /* CSSuppliersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCE017D7513B00DE7741 /* CSSuppliersViewController.m */; };
+		E7910A5717D78C1B009B99EF /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = E7910A5617D78C1B009B99EF /* Product.m */; };
+		E7910A6017D78D38009B99EF /* Tax.m in Sources */ = {isa = PBXBuildFile; fileRef = E7910A5F17D78D38009B99EF /* Tax.m */; };
+		E7910A6317D78D49009B99EF /* Supplier.m in Sources */ = {isa = PBXBuildFile; fileRef = E7910A6217D78D49009B99EF /* Supplier.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,8 +56,6 @@
 		8415A91E17B5004E00A5013E /* Outlet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Outlet.h; path = Classes/CoreData/Outlet.h; sourceTree = "<group>"; };
 		8415A91F17B5004E00A5013E /* Outlet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Outlet.m; path = Classes/CoreData/Outlet.m; sourceTree = "<group>"; };
 		8415A92117B8FC9700A5013E /* CameraScanner 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CameraScanner 3.xcdatamodel"; sourceTree = "<group>"; };
-		8415A92217B8FCE500A5013E /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = Classes/CoreData/Product.h; sourceTree = "<group>"; };
-		8415A92317B8FCE500A5013E /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = Classes/CoreData/Product.m; sourceTree = "<group>"; };
 		842BF4D417879A910066945A /* CSTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSTextFieldCell.h; path = Classes/Cells/CSTextFieldCell.h; sourceTree = "<group>"; };
 		842BF4D517879A910066945A /* CSTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSTextFieldCell.m; path = Classes/Cells/CSTextFieldCell.m; sourceTree = "<group>"; };
 		842BF4D71787A3DD0066945A /* NSString+Validate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validate.h"; sourceTree = "<group>"; };
@@ -128,18 +126,21 @@
 		84D6C5871784AB91004DB9C2 /* UIView+FindFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindFirstResponder.h"; sourceTree = "<group>"; };
 		84D6C5881784AB91004DB9C2 /* UIView+FindFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindFirstResponder.m"; sourceTree = "<group>"; };
 		8741B48D3F124EE4BA96DEC4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		E752CCCE17D7248F00DE7741 /* CameraScanner 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CameraScanner 4.xcdatamodel"; sourceTree = "<group>"; };
-		E752CCCF17D728D100DE7741 /* Tax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tax.h; path = Classes/CoreData/Tax.h; sourceTree = "<group>"; };
-		E752CCD017D728D100DE7741 /* Tax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tax.m; path = Classes/CoreData/Tax.m; sourceTree = "<group>"; };
+		E752CCCE17D7248F00DE7741 /* CameraScanner 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CameraScanner 4.xcdatamodel"; sourceTree = "<group>"; };
 		E752CCD217D73AA600DE7741 /* TaxesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaxesViewController.h; path = Classes/Controllers/TaxesViewController.h; sourceTree = "<group>"; };
 		E752CCD317D73AA600DE7741 /* TaxesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaxesViewController.m; path = Classes/Controllers/TaxesViewController.m; sourceTree = "<group>"; };
-		E752CCD517D7429400DE7741 /* CameraScanner 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CameraScanner 5.xcdatamodel"; sourceTree = "<group>"; };
+		E752CCD517D7429400DE7741 /* CameraScanner 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CameraScanner 5.xcdatamodel"; sourceTree = "<group>"; };
 		E752CCD917D7488800DE7741 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contact.h; path = Classes/CoreData/Contact.h; sourceTree = "<group>"; };
 		E752CCDA17D7488800DE7741 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contact.m; path = Classes/CoreData/Contact.m; sourceTree = "<group>"; };
-		E752CCDC17D748BD00DE7741 /* Supplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Supplier.h; path = Classes/CoreData/Supplier.h; sourceTree = "<group>"; };
-		E752CCDD17D748BD00DE7741 /* Supplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Supplier.m; path = Classes/CoreData/Supplier.m; sourceTree = "<group>"; };
 		E752CCDF17D7513A00DE7741 /* CSSuppliersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSuppliersViewController.h; path = Classes/Controllers/CSSuppliersViewController.h; sourceTree = "<group>"; };
 		E752CCE017D7513B00DE7741 /* CSSuppliersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSuppliersViewController.m; path = Classes/Controllers/CSSuppliersViewController.m; sourceTree = "<group>"; };
+		E7910A5117D78AF5009B99EF /* CameraScanner 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CameraScanner 6.xcdatamodel"; sourceTree = "<group>"; };
+		E7910A5517D78C1B009B99EF /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = Classes/CoreData/Product.h; sourceTree = "<group>"; };
+		E7910A5617D78C1B009B99EF /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = Classes/CoreData/Product.m; sourceTree = "<group>"; };
+		E7910A5E17D78D38009B99EF /* Tax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tax.h; path = Classes/CoreData/Tax.h; sourceTree = "<group>"; };
+		E7910A5F17D78D38009B99EF /* Tax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tax.m; path = Classes/CoreData/Tax.m; sourceTree = "<group>"; };
+		E7910A6117D78D49009B99EF /* Supplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Supplier.h; path = Classes/CoreData/Supplier.h; sourceTree = "<group>"; };
+		E7910A6217D78D49009B99EF /* Supplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Supplier.m; path = Classes/CoreData/Supplier.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,16 +350,16 @@
 		84D6C57E1784A3CD004DB9C2 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				8415A92217B8FCE500A5013E /* Product.h */,
-				8415A92317B8FCE500A5013E /* Product.m */,
 				8415A91E17B5004E00A5013E /* Outlet.h */,
 				8415A91F17B5004E00A5013E /* Outlet.m */,
-				E752CCCF17D728D100DE7741 /* Tax.h */,
-				E752CCD017D728D100DE7741 /* Tax.m */,
 				E752CCD917D7488800DE7741 /* Contact.h */,
 				E752CCDA17D7488800DE7741 /* Contact.m */,
-				E752CCDC17D748BD00DE7741 /* Supplier.h */,
-				E752CCDD17D748BD00DE7741 /* Supplier.m */,
+				E7910A5517D78C1B009B99EF /* Product.h */,
+				E7910A5617D78C1B009B99EF /* Product.m */,
+				E7910A5E17D78D38009B99EF /* Tax.h */,
+				E7910A5F17D78D38009B99EF /* Tax.m */,
+				E7910A6117D78D49009B99EF /* Supplier.h */,
+				E7910A6217D78D49009B99EF /* Supplier.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -495,12 +496,12 @@
 				842BF4D91787A3DD0066945A /* NSString+Validate.m in Sources */,
 				849DB50017A9B8B7004B4A5D /* NSURLParser.m in Sources */,
 				8415A92017B5004E00A5013E /* Outlet.m in Sources */,
-				8415A92417B8FCE500A5013E /* Product.m in Sources */,
-				E752CCD117D728D100DE7741 /* Tax.m in Sources */,
 				E752CCD417D73AA600DE7741 /* TaxesViewController.m in Sources */,
 				E752CCDB17D7488800DE7741 /* Contact.m in Sources */,
-				E752CCDE17D748BD00DE7741 /* Supplier.m in Sources */,
 				E752CCE117D7513B00DE7741 /* CSSuppliersViewController.m in Sources */,
+				E7910A5717D78C1B009B99EF /* Product.m in Sources */,
+				E7910A6017D78D38009B99EF /* Tax.m in Sources */,
+				E7910A6317D78D49009B99EF /* Supplier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,13 +646,14 @@
 		84D6C52F1784881E004DB9C2 /* CameraScanner.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E7910A5117D78AF5009B99EF /* CameraScanner 6.xcdatamodel */,
 				E752CCD517D7429400DE7741 /* CameraScanner 5.xcdatamodel */,
 				E752CCCE17D7248F00DE7741 /* CameraScanner 4.xcdatamodel */,
 				8415A92117B8FC9700A5013E /* CameraScanner 3.xcdatamodel */,
 				8469FC2717B4FB8000AE6B73 /* CameraScanner 2.xcdatamodel */,
 				84D6C5301784881E004DB9C2 /* CameraScanner.xcdatamodel */,
 			);
-			currentVersion = E752CCD517D7429400DE7741 /* CameraScanner 5.xcdatamodel */;
+			currentVersion = E7910A5117D78AF5009B99EF /* CameraScanner 6.xcdatamodel */;
 			path = CameraScanner.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

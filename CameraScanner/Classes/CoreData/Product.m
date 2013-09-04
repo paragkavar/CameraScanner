@@ -2,12 +2,14 @@
 //  Product.m
 //  CameraScanner
 //
-//  Created by Rostislav Kobizskiy on 8/12/13.
+//  Created by Владимир on 04.09.13.
 //  Copyright (c) 2013 Rost's company. All rights reserved.
 //
 
 #import "Product.h"
 #import "Outlet.h"
+#import "Supplier.h"
+#import "Tax.h"
 
 
 @implementation Product
@@ -27,9 +29,11 @@
 @dynamic supplierName;
 @dynamic tags;
 @dynamic tax;
-@dynamic updatedAt;
 @dynamic taxName;
 @dynamic taxRate;
+@dynamic updatedAt;
 @dynamic inventory;
+@dynamic productTax;
+@dynamic supplier;
 
 @end
