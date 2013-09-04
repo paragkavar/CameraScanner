@@ -22,6 +22,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *handle;
 @property (nonatomic, copy) NSString *price;
+
 @property (nonatomic) BOOL firstLaunch;
 
 - (IBAction)handleDone:(id)sender;
@@ -103,6 +104,8 @@
     _name = _itemForEdit ? _itemForEdit.name : @"";
     _handle =  _itemForEdit ? _itemForEdit.handle : @"";
     _price = _itemForEdit ? [NSString stringWithFormat:@"%0.2f", (_itemForEdit.price.floatValue + _itemForEdit.tax.floatValue)] : @"";
+    _taxName = _itemForEdit ? _itemForEdit.taxName : @"";
+    _supplierName = _itemForEdit ? _itemForEdit.supplierName : @"";
     [self.tableView reloadData];
 }
 
@@ -115,7 +118,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) return _itemForEdit ? 5 : 4;
+    if (section == 0) return _itemForEdit ? 6 : 6;
     if (section == 1) return _itemForEdit.inventory.count;
     
     return 0;
@@ -149,10 +152,14 @@
                 cell.textField.returnKeyType = UIReturnKeyDone;
                 break;
             case 4:
-                cell.textField.text = _itemForEdit.taxName;
+                cell.textField.text = _taxName;
                 cell.textField.placeholder = NSLocalizedString(@"Tax name", @"Tax name");
                 cell.textField.enabled = NO;
                 break;
+            case 5:
+                cell.textField.text = _supplierName;
+                cell.textField.placeholder = NSLocalizedString(@"Supplier name", @"Supplier name");
+                cell.textField.enabled = NO;
             default:
                 break;
         }
@@ -192,6 +199,10 @@
         if (indexPath.row == 4)
         {
             [self performSegueWithIdentifier:@"tax" sender:self];            
+        }
+        if (indexPath.row == 5)
+        {
+            [self performSegueWithIdentifier:@"supplier" sender:self];
         }
     }
 }
@@ -328,6 +339,8 @@
             _itemForEdit.name = self.name;
             _itemForEdit.handle = self.handle;
             _itemForEdit.retailPrice = @(self.price.floatValue);
+            _itemForEdit.taxName = _taxName;
+            _itemForEdit.supplierName = _supplierName;
             
             [[WebEngine sharedManager] putProduct:_itemForEdit success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                 [[[UIAlertView alloc] initWithTitle:@"Store"
@@ -353,6 +366,8 @@
             newProduct.handle = _handle;
             newProduct.retailPrice = @(_price.floatValue);
             newProduct.sku = _sku;
+            newProduct.taxName = _taxName;
+            newProduct.supplierName = _supplierName;
             
             [[WebEngine sharedManager] postProduct:newProduct success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                 [[[UIAlertView alloc] initWithTitle:@"Store"

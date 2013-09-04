@@ -1,22 +1,21 @@
 //
-//  TaxesViewController.m
+//  CSSuppliersViewController.m
 //  CameraScanner
 //
 //  Created by Владимир on 04.09.13.
 //  Copyright (c) 2013 Rost's company. All rights reserved.
 //
 
-#import "TaxesViewController.h"
-#import "Tax.h"
-#import "Product.h"
+#import "CSSuppliersViewController.h"
 #import "CSCreateProduct.h"
+#import "Supplier.h"
+#import "Contact.h"
 
-@interface TaxesViewController ()
+@interface CSSuppliersViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
-
 @end
 
-@implementation TaxesViewController
+@implementation CSSuppliersViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,8 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _fetchedResultsController = [Tax fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil];
-    
+    _fetchedResultsController = [Supplier fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil];    
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,9 +66,9 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    Tax *tax = [_fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = tax.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Rate: %f", [tax.rate floatValue]];
+    Supplier *supplier = [_fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = supplier.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Company name: %@", supplier.contact.company_name];
 }
 
 #pragma mark - Table view delegate
@@ -78,8 +76,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CSCreateProduct *productController = [self.navigationController.viewControllers objectAtIndex:0];
-    Tax *tax = [_fetchedResultsController objectAtIndexPath:indexPath];
-    productController.taxName = tax.name;
+    Supplier *supplier = [_fetchedResultsController objectAtIndexPath:indexPath];
+    productController.supplierName = supplier.name;
     [productController.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -135,5 +133,4 @@
 {
     [self.tableView endUpdates];
 }
-
 @end

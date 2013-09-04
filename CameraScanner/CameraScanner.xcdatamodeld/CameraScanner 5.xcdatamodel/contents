@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12C3103" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Contact" syncable="YES">
+    <entity name="Contact" representedClassName="Contact" syncable="YES">
         <attribute name="company_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fax" optional="YES" attributeType="String" syncable="YES"/>
@@ -55,7 +55,7 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="inventory" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Outlet" inverseName="product" inverseEntity="Outlet" syncable="YES"/>
     </entity>
-    <entity name="Supplier" syncable="YES">
+    <entity name="Supplier" representedClassName="Supplier" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="retailer_id" optional="YES" attributeType="String" syncable="YES"/>
@@ -71,7 +71,7 @@
     <elements>
         <element name="Outlet" positionX="-785" positionY="-826" width="128" height="133"/>
         <element name="Product" positionX="-954" positionY="-855" width="128" height="328"/>
-        <element name="Tax" positionX="-783" positionY="-664" width="128" height="88"/>
+        <element name="Tax" positionX="-614" positionY="-720" width="128" height="88"/>
         <element name="Supplier" positionX="-614" positionY="-873" width="128" height="133"/>
         <element name="Contact" positionX="-443" positionY="-877" width="128" height="403"/>
     </elements>

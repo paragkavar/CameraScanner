@@ -46,6 +46,9 @@
 		84D6C58B1784AB91004DB9C2 /* UIView+FindFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C5881784AB91004DB9C2 /* UIView+FindFirstResponder.m */; };
 		E752CCD117D728D100DE7741 /* Tax.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCD017D728D100DE7741 /* Tax.m */; };
 		E752CCD417D73AA600DE7741 /* TaxesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCD317D73AA600DE7741 /* TaxesViewController.m */; };
+		E752CCDB17D7488800DE7741 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCDA17D7488800DE7741 /* Contact.m */; };
+		E752CCDE17D748BD00DE7741 /* Supplier.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCDD17D748BD00DE7741 /* Supplier.m */; };
+		E752CCE117D7513B00DE7741 /* CSSuppliersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCE017D7513B00DE7741 /* CSSuppliersViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +134,12 @@
 		E752CCD217D73AA600DE7741 /* TaxesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaxesViewController.h; path = Classes/Controllers/TaxesViewController.h; sourceTree = "<group>"; };
 		E752CCD317D73AA600DE7741 /* TaxesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaxesViewController.m; path = Classes/Controllers/TaxesViewController.m; sourceTree = "<group>"; };
 		E752CCD517D7429400DE7741 /* CameraScanner 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CameraScanner 5.xcdatamodel"; sourceTree = "<group>"; };
+		E752CCD917D7488800DE7741 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contact.h; path = Classes/CoreData/Contact.h; sourceTree = "<group>"; };
+		E752CCDA17D7488800DE7741 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contact.m; path = Classes/CoreData/Contact.m; sourceTree = "<group>"; };
+		E752CCDC17D748BD00DE7741 /* Supplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Supplier.h; path = Classes/CoreData/Supplier.h; sourceTree = "<group>"; };
+		E752CCDD17D748BD00DE7741 /* Supplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Supplier.m; path = Classes/CoreData/Supplier.m; sourceTree = "<group>"; };
+		E752CCDF17D7513A00DE7741 /* CSSuppliersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSuppliersViewController.h; path = Classes/Controllers/CSSuppliersViewController.h; sourceTree = "<group>"; };
+		E752CCE017D7513B00DE7741 /* CSSuppliersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSuppliersViewController.m; path = Classes/Controllers/CSSuppliersViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +329,8 @@
 				8445A03A17861B2800D52FC8 /* CSCreateProduct.m */,
 				E752CCD217D73AA600DE7741 /* TaxesViewController.h */,
 				E752CCD317D73AA600DE7741 /* TaxesViewController.m */,
+				E752CCDF17D7513A00DE7741 /* CSSuppliersViewController.h */,
+				E752CCE017D7513B00DE7741 /* CSSuppliersViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -344,6 +355,10 @@
 				8415A91F17B5004E00A5013E /* Outlet.m */,
 				E752CCCF17D728D100DE7741 /* Tax.h */,
 				E752CCD017D728D100DE7741 /* Tax.m */,
+				E752CCD917D7488800DE7741 /* Contact.h */,
+				E752CCDA17D7488800DE7741 /* Contact.m */,
+				E752CCDC17D748BD00DE7741 /* Supplier.h */,
+				E752CCDD17D748BD00DE7741 /* Supplier.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -483,6 +498,9 @@
 				8415A92417B8FCE500A5013E /* Product.m in Sources */,
 				E752CCD117D728D100DE7741 /* Tax.m in Sources */,
 				E752CCD417D73AA600DE7741 /* TaxesViewController.m in Sources */,
+				E752CCDB17D7488800DE7741 /* Contact.m in Sources */,
+				E752CCDE17D748BD00DE7741 /* Supplier.m in Sources */,
+				E752CCE117D7513B00DE7741 /* CSSuppliersViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,7 +651,7 @@
 				8469FC2717B4FB8000AE6B73 /* CameraScanner 2.xcdatamodel */,
 				84D6C5301784881E004DB9C2 /* CameraScanner.xcdatamodel */,
 			);
-			currentVersion = E752CCCE17D7248F00DE7741 /* CameraScanner 4.xcdatamodel */;
+			currentVersion = E752CCD517D7429400DE7741 /* CameraScanner 5.xcdatamodel */;
 			path = CameraScanner.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

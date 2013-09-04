@@ -11,8 +11,10 @@
 #import "WebEngine.h"
 #import "Product.h"
 #import "Tax.h"
+#import "Supplier.h"
 #import <NSData+Base64/NSData+Base64.h>
 #import "NSURLParser.h"
+#import "Contact.h"
 
 NSString *const VendCredentialsLogin = @"VendCredentialsLogin";
 NSString *const VendCredentialsPassword = @"VendCredentialsPassword";
@@ -151,7 +153,20 @@ NSURL *VEND_STORE_API = nil;
     return taxMapping;
 }
 
-
++ (RKEntityMapping *)supplierMappingInManagedObjectStore:(RKManagedObjectStore *)store {
+    
+    RKEntityMapping *supplierMapping = [RKEntityMapping mappingForEntityForName:@"Supplier" inManagedObjectStore:store];
+    [supplierMapping setIdentificationAttributes:@[@"id"]];
+    [supplierMapping addAttributeMappingsFromArray:@[@"id", @"retailer_id", @"name", @"source"]];
+    [supplierMapping addAttributeMappingsFromDictionary:@{ @"description": @"supplierDescription"}];
+    
+    RKEntityMapping *contactMapping = [RKEntityMapping mappingForEntityForName:@"Contact" inManagedObjectStore:store];
+    NSEntityDescription *contactEntity = [NSEntityDescription entityForName:@"Contact" inManagedObjectContext:[NSManagedObjectContext contextForCurrentThread]];
+    [contactMapping addAttributeMappingsFromArray: [contactEntity.attributesByName allKeys]];
+    [supplierMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"contact" toKeyPath:@"contact" withMapping:contactMapping]];
+    
+    return supplierMapping;
+}
 
 - (void)configurateRouting {
     // Relationship Routing
@@ -198,18 +213,41 @@ NSURL *VEND_STORE_API = nil;
                                                                                   objectClass:[Tax class]
                                                                                   rootKeyPath:nil];
     
+    RKEntityMapping *supplierMapping = [WebEngine supplierMappingInManagedObjectStore:_objectStore];
+    
+    RKResponseDescriptor *supplierGetRespDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:supplierMapping
+                                                                                         pathPattern:@"supplier"
+                                                                                             keyPath:@"suppliers"
+                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *supplierPostRespDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:supplierMapping
+                                                                                          pathPattern:@"supplier"
+                                                                                              keyPath:@"supplier"
+                                                                                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *supplierDeleteRespDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:supplierMapping
+                                                                                                pathPattern:@"supplier/:id"
+                                                                                                    keyPath:nil
+                                                                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    RKRequestDescriptor *supplierReqDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[supplierMapping inverseMapping]                                                  
+                                                                                       objectClass:[Supplier class]                                                  
+                                                                                       rootKeyPath:nil];
+    
     
     [_objectManager addResponseDescriptorsFromArray:@[
          productRespDescriptor,
          productPostRespDescriptor,
          productDeleteRespDescriptor,
          taxGetRespDescriptor,
-         taxPostRespDescriptor
+         taxPostRespDescriptor,
+         supplierGetRespDescriptor,
+         supplierPostRespDescriptor,
+         supplierDeleteRespDescriptor
      ]];
     
     [_objectManager addRequestDescriptorsFromArray:@[
          productReqDescriptor,
-         taxReqDescriptor
+         taxReqDescriptor,
+         supplierReqDescriptor
      ]];
     
     
@@ -228,7 +266,6 @@ NSURL *VEND_STORE_API = nil;
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Product"];
             return fetchRequest;
         }
-        
         return nil;
     }];
     
@@ -333,6 +370,50 @@ NSURL *VEND_STORE_API = nil;
                     parameters:nil
                        success:success
                        failure:failure];
+}
+
+- (void)getSupplierSuccess:(WebEngineSuccess)success
+                   failure:(WebEngineFaluire)failure
+{
+    [_objectManager getObjectsAtPath:@"supplier"
+                          parameters:nil
+                             success:success
+                             failure:failure];
+    
+    
+}
+
+- (void)postSupplier:(Supplier *)supplier
+            success:(WebEngineSuccess)success
+            failure:(WebEngineFaluire)failure
+{
+    [_objectManager postObject:supplier
+                          path:@"supplier"
+                    parameters:nil
+                       success:success
+                       failure:failure];
+}
+
+- (void)putSupplier:(Supplier *)supplier
+           success:(WebEngineSuccess)success
+           failure:(WebEngineFaluire)failure
+{
+    [_objectManager putObject:supplier
+                         path:@"supplier"
+                   parameters:nil
+                      success:success
+                      failure:failure];
+}
+
+- (void)deleteSupplier:(Supplier *)supplier
+              success:(WebEngineSuccess)success
+              failure:(WebEngineFaluire)failure
+{
+    [_objectManager deleteObject:supplier
+                            path:nil
+                      parameters:nil
+                         success:success
+                         failure:failure];
 }
 
 - (BOOL)hasInternet
