@@ -52,7 +52,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     CSTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    cell.textField.enabled = NO;
     // Configure the cell...    
     switch (indexPath.row) {
         case 0:

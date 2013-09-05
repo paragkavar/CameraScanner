@@ -51,7 +51,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     CSTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
+    cell.textField.enabled = NO;
     switch (indexPath.row) {
         case 0:
             cell.textField.text = [NSLocalizedString(@"Tax name: ", nil) stringByAppendingString: _tax.name];
