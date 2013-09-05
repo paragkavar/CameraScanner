@@ -7,7 +7,7 @@
 //
 
 #import "CSCreateProduct.h"
-
+#import "CSTaxDetailViewController.h"
 #import "Product.h"
 #import "Tax.h"
 #import "Supplier.h"
@@ -15,7 +15,7 @@
 #import "ZBarReaderViewController.h"
 #import "WebEngine.h"
 #import "CSTextFieldCell.h"
-
+#import "CSSupplierDetailViewController.h"
 #import "NSString+Validate.h"
 #import "UIView+FindFirstResponder.h"
 
@@ -215,7 +215,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{    
     if (indexPath.section == 0)
     {
         if (indexPath.row == 4)
@@ -225,19 +225,31 @@
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 NSLog(@"delete fail");
             }];
-            [self backToScaner:nil];
-                                               
+            [self backToScaner:nil];                                               
         }
     }
     if (indexPath.section == 1)
     {
-        [self performSegueWithIdentifier:@"tax" sender:self];
+        [self performSegueWithIdentifier:_itemForEdit? @"taxDetail": @"tax" sender:self];
     }
     if (indexPath.section == 2)
     {
-        [self performSegueWithIdentifier:@"supplier" sender:self];
+        [self performSegueWithIdentifier:_itemForEdit? @"supplierDetail": @"supplier" sender:self];
     }
+}
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"taxDetail"])
+    {        
+        CSTaxDetailViewController *detailController = segue.destinationViewController;
+        detailController.tax = _tax;
+    }
+    if ([segue.identifier isEqualToString:@"supplierDetail"])
+    {
+        CSSupplierDetailViewController *detailController = segue.destinationViewController;
+        detailController.supplier = _supplier;
+    }
 }
 
 #pragma mark - TextField Delegate

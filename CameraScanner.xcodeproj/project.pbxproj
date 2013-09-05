@@ -43,6 +43,8 @@
 		84D6C5891784AB91004DB9C2 /* NSEntityDescription+RKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C5841784AB91004DB9C2 /* NSEntityDescription+RKAdditions.m */; };
 		84D6C58A1784AB91004DB9C2 /* NSManagedObject+ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C5861784AB91004DB9C2 /* NSManagedObject+ActiveRecord.m */; };
 		84D6C58B1784AB91004DB9C2 /* UIView+FindFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C5881784AB91004DB9C2 /* UIView+FindFirstResponder.m */; };
+		E7071FDB17D8686A0076230B /* CSTaxDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7071FDA17D8686A0076230B /* CSTaxDetailViewController.m */; };
+		E7071FDE17D86F1E0076230B /* CSSupplierDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7071FDD17D86F1E0076230B /* CSSupplierDetailViewController.m */; };
 		E752CCD417D73AA600DE7741 /* TaxesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCD317D73AA600DE7741 /* TaxesViewController.m */; };
 		E752CCDB17D7488800DE7741 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCDA17D7488800DE7741 /* Contact.m */; };
 		E752CCE117D7513B00DE7741 /* CSSuppliersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCE017D7513B00DE7741 /* CSSuppliersViewController.m */; };
@@ -126,6 +128,10 @@
 		84D6C5871784AB91004DB9C2 /* UIView+FindFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindFirstResponder.h"; sourceTree = "<group>"; };
 		84D6C5881784AB91004DB9C2 /* UIView+FindFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindFirstResponder.m"; sourceTree = "<group>"; };
 		8741B48D3F124EE4BA96DEC4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		E7071FD917D8686A0076230B /* CSTaxDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSTaxDetailViewController.h; path = Classes/Controllers/CSTaxDetailViewController.h; sourceTree = "<group>"; };
+		E7071FDA17D8686A0076230B /* CSTaxDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSTaxDetailViewController.m; path = Classes/Controllers/CSTaxDetailViewController.m; sourceTree = "<group>"; };
+		E7071FDC17D86F1E0076230B /* CSSupplierDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSupplierDetailViewController.h; path = Classes/Controllers/CSSupplierDetailViewController.h; sourceTree = "<group>"; };
+		E7071FDD17D86F1E0076230B /* CSSupplierDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSupplierDetailViewController.m; path = Classes/Controllers/CSSupplierDetailViewController.m; sourceTree = "<group>"; };
 		E752CCCE17D7248F00DE7741 /* CameraScanner 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CameraScanner 4.xcdatamodel"; sourceTree = "<group>"; };
 		E752CCD217D73AA600DE7741 /* TaxesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaxesViewController.h; path = Classes/Controllers/TaxesViewController.h; sourceTree = "<group>"; };
 		E752CCD317D73AA600DE7741 /* TaxesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaxesViewController.m; path = Classes/Controllers/TaxesViewController.m; sourceTree = "<group>"; };
@@ -134,7 +140,7 @@
 		E752CCDA17D7488800DE7741 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contact.m; path = Classes/CoreData/Contact.m; sourceTree = "<group>"; };
 		E752CCDF17D7513A00DE7741 /* CSSuppliersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSuppliersViewController.h; path = Classes/Controllers/CSSuppliersViewController.h; sourceTree = "<group>"; };
 		E752CCE017D7513B00DE7741 /* CSSuppliersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSuppliersViewController.m; path = Classes/Controllers/CSSuppliersViewController.m; sourceTree = "<group>"; };
-		E7910A5117D78AF5009B99EF /* CameraScanner 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CameraScanner 6.xcdatamodel"; sourceTree = "<group>"; };
+		E7910A5117D78AF5009B99EF /* CameraScanner 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CameraScanner 6.xcdatamodel"; sourceTree = "<group>"; };
 		E7910A5517D78C1B009B99EF /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = Classes/CoreData/Product.h; sourceTree = "<group>"; };
 		E7910A5617D78C1B009B99EF /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = Classes/CoreData/Product.m; sourceTree = "<group>"; };
 		E7910A5E17D78D38009B99EF /* Tax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tax.h; path = Classes/CoreData/Tax.h; sourceTree = "<group>"; };
@@ -332,6 +338,10 @@
 				E752CCD317D73AA600DE7741 /* TaxesViewController.m */,
 				E752CCDF17D7513A00DE7741 /* CSSuppliersViewController.h */,
 				E752CCE017D7513B00DE7741 /* CSSuppliersViewController.m */,
+				E7071FD917D8686A0076230B /* CSTaxDetailViewController.h */,
+				E7071FDA17D8686A0076230B /* CSTaxDetailViewController.m */,
+				E7071FDC17D86F1E0076230B /* CSSupplierDetailViewController.h */,
+				E7071FDD17D86F1E0076230B /* CSSupplierDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -502,6 +512,8 @@
 				E7910A5717D78C1B009B99EF /* Product.m in Sources */,
 				E7910A6017D78D38009B99EF /* Tax.m in Sources */,
 				E7910A6317D78D49009B99EF /* Supplier.m in Sources */,
+				E7071FDB17D8686A0076230B /* CSTaxDetailViewController.m in Sources */,
+				E7071FDE17D86F1E0076230B /* CSSupplierDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
