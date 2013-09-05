@@ -9,7 +9,9 @@
 #import "CSSupplierDetailViewController.h"
 #import "CSTextFieldCell.h"
 #import "Contact.h"
-@interface CSSupplierDetailViewController ()
+#import "CSAddressDetailViewController.h"
+#import <MessageUI/MFMailComposeViewController.h>
+@interface CSSupplierDetailViewController () <MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -27,12 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,10 +86,10 @@
                 cell.textField.text = [NSLocalizedString(@"Email: ", nil) stringByAppendingFormat:@"%@", _supplier.contact.email? _supplier.contact.email: @""];
                 break;
             case 5:
-                cell.textField.text = [NSLocalizedString(@"Twitter: ", nil) stringByAppendingFormat:@"%@", _supplier.contact.twitter? _supplier.contact.twitter: @""];
+                cell.textField.text = [NSLocalizedString(@"Website: ", nil) stringByAppendingFormat:@"%@", _supplier.contact.website? _supplier.contact.website: @""];
                 break;
             case 6:
-                cell.textField.text = [NSLocalizedString(@"Website: ", nil) stringByAppendingFormat:@"%@", _supplier.contact.website? _supplier.contact.website: @""];
+                cell.textField.text = [NSLocalizedString(@"Twitter: ", nil) stringByAppendingFormat:@"%@", _supplier.contact.twitter? _supplier.contact.twitter: @""];
                 break;
             case 7:
                 cell.textField.text = NSLocalizedString(@"Postal address", nil);
@@ -106,62 +102,62 @@
             default:
                 break;
         }
-
     }
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    if (indexPath.row == 3 && _supplier.contact.phone)
+    {
+        NSLog(@"calling...");
+        NSString *phoneNumber = [@"telprompt://" stringByAppendingString:_supplier.contact.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    }
+    if (indexPath.row == 4 && _supplier.contact.email)
+    {
+        MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+        controller.mailComposeDelegate = self;
+        [controller setToRecipients:@[_supplier.contact.email]];
+        [controller setSubject:@""];
+        [controller setMessageBody:@"" isHTML:NO];
+        if (controller) [self presentViewController:controller animated:YES completion:nil];
+    }
+    if (indexPath.row == 5 && _supplier.contact.website)
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: _supplier.contact.website]];
+    }
+    if (indexPath.row == 7 || indexPath.row == 8)
+    {
+        [self performSegueWithIdentifier:@"addressDetail" sender:self];
+    }
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    CSAddressDetailViewController *addressController = segue.destinationViewController;
+    if (indexPath.row == 7)
+    {
+        addressController.isPostal = YES;
+    }
+    addressController.contact = _supplier.contact;
+}
+
+#pragma mark - Mail controller delegate
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error;
+{
+    if (result == MFMailComposeResultSent) {
+        NSLog(@"mail was sent");
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

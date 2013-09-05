@@ -45,6 +45,8 @@
 		84D6C58B1784AB91004DB9C2 /* UIView+FindFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6C5881784AB91004DB9C2 /* UIView+FindFirstResponder.m */; };
 		E7071FDB17D8686A0076230B /* CSTaxDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7071FDA17D8686A0076230B /* CSTaxDetailViewController.m */; };
 		E7071FDE17D86F1E0076230B /* CSSupplierDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7071FDD17D86F1E0076230B /* CSSupplierDetailViewController.m */; };
+		E7071FE117D876B00076230B /* CSAddressDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7071FE017D876B00076230B /* CSAddressDetailViewController.m */; };
+		E7071FE317D885280076230B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7071FE217D885280076230B /* MessageUI.framework */; };
 		E752CCD417D73AA600DE7741 /* TaxesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCD317D73AA600DE7741 /* TaxesViewController.m */; };
 		E752CCDB17D7488800DE7741 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCDA17D7488800DE7741 /* Contact.m */; };
 		E752CCE117D7513B00DE7741 /* CSSuppliersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CCE017D7513B00DE7741 /* CSSuppliersViewController.m */; };
@@ -132,6 +134,9 @@
 		E7071FDA17D8686A0076230B /* CSTaxDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSTaxDetailViewController.m; path = Classes/Controllers/CSTaxDetailViewController.m; sourceTree = "<group>"; };
 		E7071FDC17D86F1E0076230B /* CSSupplierDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSupplierDetailViewController.h; path = Classes/Controllers/CSSupplierDetailViewController.h; sourceTree = "<group>"; };
 		E7071FDD17D86F1E0076230B /* CSSupplierDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSupplierDetailViewController.m; path = Classes/Controllers/CSSupplierDetailViewController.m; sourceTree = "<group>"; };
+		E7071FDF17D876B00076230B /* CSAddressDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSAddressDetailViewController.h; path = Classes/Controllers/CSAddressDetailViewController.h; sourceTree = "<group>"; };
+		E7071FE017D876B00076230B /* CSAddressDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSAddressDetailViewController.m; path = Classes/Controllers/CSAddressDetailViewController.m; sourceTree = "<group>"; };
+		E7071FE217D885280076230B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E752CCCE17D7248F00DE7741 /* CameraScanner 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CameraScanner 4.xcdatamodel"; sourceTree = "<group>"; };
 		E752CCD217D73AA600DE7741 /* TaxesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaxesViewController.h; path = Classes/Controllers/TaxesViewController.h; sourceTree = "<group>"; };
 		E752CCD317D73AA600DE7741 /* TaxesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaxesViewController.m; path = Classes/Controllers/TaxesViewController.m; sourceTree = "<group>"; };
@@ -154,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7071FE317D885280076230B /* MessageUI.framework in Frameworks */,
 				849DB4FD17A9AD6F004B4A5D /* SystemConfiguration.framework in Frameworks */,
 				842BF4DF1787ADB10066945A /* libz.dylib in Frameworks */,
 				84D6C56617848E56004DB9C2 /* libiconv.dylib in Frameworks */,
@@ -213,6 +219,7 @@
 		84D6C5141784881E004DB9C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E7071FE217D885280076230B /* MessageUI.framework */,
 				842BF4DE1787ADB10066945A /* libz.dylib */,
 				849DB4FC17A9AD6F004B4A5D /* SystemConfiguration.framework */,
 				84D6C56517848E56004DB9C2 /* libiconv.dylib */,
@@ -342,6 +349,8 @@
 				E7071FDA17D8686A0076230B /* CSTaxDetailViewController.m */,
 				E7071FDC17D86F1E0076230B /* CSSupplierDetailViewController.h */,
 				E7071FDD17D86F1E0076230B /* CSSupplierDetailViewController.m */,
+				E7071FDF17D876B00076230B /* CSAddressDetailViewController.h */,
+				E7071FE017D876B00076230B /* CSAddressDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -514,6 +523,7 @@
 				E7910A6317D78D49009B99EF /* Supplier.m in Sources */,
 				E7071FDB17D8686A0076230B /* CSTaxDetailViewController.m in Sources */,
 				E7071FDE17D86F1E0076230B /* CSSupplierDetailViewController.m in Sources */,
+				E7071FE117D876B00076230B /* CSAddressDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
