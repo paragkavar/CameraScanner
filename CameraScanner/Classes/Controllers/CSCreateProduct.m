@@ -230,11 +230,11 @@
     }
     if (indexPath.section == 1)
     {
-        [self performSegueWithIdentifier:_itemForEdit? @"taxDetail": @"tax" sender:self];
+        [self performSegueWithIdentifier:_itemForEdit.productTax? @"taxDetail": @"tax" sender:self];
     }
     if (indexPath.section == 2)
     {
-        [self performSegueWithIdentifier:_itemForEdit? @"supplierDetail": @"supplier" sender:self];
+        [self performSegueWithIdentifier:_itemForEdit.supplier? @"supplierDetail": @"supplier" sender:self];
     }
 }
 
@@ -317,6 +317,7 @@
 
 - (IBAction)backToScaner:(id)sender
 {
+    [self.tableView resignAllResponder];
     ZBarReaderViewController *reader = [ZBarReaderViewController new];
     reader.readerDelegate = self;
     reader.supportedOrientationsMask = ZBarOrientationMaskAll;    

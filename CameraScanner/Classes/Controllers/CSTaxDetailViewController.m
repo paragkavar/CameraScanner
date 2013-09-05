@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = NSLocalizedString(@"Tax", nil);
 }
 
 - (void)didReceiveMemoryWarning

@@ -29,6 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = NSLocalizedString(@"Supplier", nil);
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,6 +106,13 @@
     }
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 1)
+        return NSLocalizedString(@"Contact", nil);
+    return nil;
 }
 
 #pragma mark - Table view delegate
