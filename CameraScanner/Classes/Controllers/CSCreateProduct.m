@@ -24,7 +24,6 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *handle;
 @property (nonatomic, copy) NSString *price;
-
 @property (nonatomic) BOOL firstLaunch;
 
 - (IBAction)handleDone:(id)sender;
@@ -48,6 +47,7 @@
 	// Do any additional setup after loading the view.
     _firstLaunch = YES;
     [self backToScaner:nil];
+    [self registerForKeyboardNotifications];
 }
 
 - (void)didReceiveMemoryWarning
@@ -466,4 +466,40 @@
     [self setTableView:nil];
     [super viewDidUnload];
 }
+
+#pragma mark - adjust scroll for keyboard show/hide
+
+- (void)registerForKeyboardNotifications
+{    
+    [[NSNotificationCenter defaultCenter] addObserver:self     
+                                             selector:@selector(keyboardWasShown:)     
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self     
+                                             selector:@selector(keyboardWillBeHidden:)     
+                                                 name:UIKeyboardWillHideNotification object:nil];    
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+
+{    
+    NSDictionary* info = [aNotification userInfo];    
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;      
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);    
+    _tableView.contentInset = contentInsets;    
+    _tableView.scrollIndicatorInsets = contentInsets;
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+
+{    
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;    
+    _tableView.contentInset = contentInsets;    
+    _tableView.scrollIndicatorInsets = contentInsets;    
+}
+
 @end

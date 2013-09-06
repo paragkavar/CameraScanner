@@ -117,8 +117,8 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="DMn-se-uWu" firstAttribute="leading" secondItem="fFq-0N-iNk" secondAttribute="leading" constant="18" type="default" id="Gz3-Gd-QVk"/>
-                                    <constraint firstAttribute="trailing" secondItem="DMn-se-uWu" secondAttribute="trailing" constant="18" type="default" id="HhB-ca-KyC"/>
+                                    <constraint firstItem="DMn-se-uWu" firstAttribute="leading" secondItem="fFq-0N-iNk" secondAttribute="leading" constant="20" type="user" id="Gz3-Gd-QVk"/>
+                                    <constraint firstAttribute="trailing" secondItem="DMn-se-uWu" secondAttribute="trailing" constant="20" type="user" id="HhB-ca-KyC"/>
                                     <constraint firstItem="DMn-se-uWu" firstAttribute="top" secondItem="fFq-0N-iNk" secondAttribute="top" constant="1" id="m6z-2G-lnF"/>
                                 </constraints>
                                 <connections>
@@ -167,9 +167,8 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="0Zb-2z-ne5" firstAttribute="leading" secondItem="Hl3-BM-Gjz" secondAttribute="leading" constant="18" type="user" id="OYG-vP-vlA"/>
-                                    <constraint firstItem="0Zb-2z-ne5" firstAttribute="centerX" secondItem="Hl3-BM-Gjz" secondAttribute="centerX" type="user" id="koh-px-EZv"/>
-                                    <constraint firstAttribute="trailing" secondItem="0Zb-2z-ne5" secondAttribute="trailing" constant="18" type="user" id="sPO-Ze-Xaa"/>
+                                    <constraint firstItem="0Zb-2z-ne5" firstAttribute="leading" secondItem="Hl3-BM-Gjz" secondAttribute="leading" constant="20" type="user" id="OYG-vP-vlA"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Zb-2z-ne5" secondAttribute="trailing" constant="20" type="user" id="sPO-Ze-Xaa"/>
                                     <constraint firstItem="0Zb-2z-ne5" firstAttribute="top" secondItem="Hl3-BM-Gjz" secondAttribute="top" constant="1" id="sfL-Cb-J7k"/>
                                 </constraints>
                                 <connections>
@@ -208,10 +207,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ydd-Xq-9Ga">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="46" id="SH0-ew-pqq"/>
-                                                <constraint firstAttribute="width" constant="284" id="vJI-zl-2Vt"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
@@ -222,8 +217,10 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="ydd-Xq-9Ga" firstAttribute="leading" secondItem="eGq-19-75f" secondAttribute="leading" constant="30" id="NCE-Md-cKO"/>
-                                    <constraint firstItem="ydd-Xq-9Ga" firstAttribute="top" secondItem="eGq-19-75f" secondAttribute="top" constant="1" id="pwq-FV-atn"/>
+                                    <constraint firstAttribute="trailing" secondItem="ydd-Xq-9Ga" secondAttribute="trailing" constant="20" type="user" id="BUS-10-KVi"/>
+                                    <constraint firstItem="ydd-Xq-9Ga" firstAttribute="bottom" secondItem="eGq-19-75f" secondAttribute="bottom" type="default" id="MKx-19-Arp"/>
+                                    <constraint firstItem="ydd-Xq-9Ga" firstAttribute="top" secondItem="eGq-19-75f" secondAttribute="top" type="default" id="b6j-zn-8eO"/>
+                                    <constraint firstItem="ydd-Xq-9Ga" firstAttribute="leading" secondItem="eGq-19-75f" secondAttribute="leading" constant="20" type="user" id="hXw-1a-KMa"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="textField" destination="ydd-Xq-9Ga" id="YBa-At-zmD"/>
@@ -251,9 +248,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="eLA-H7-sK9">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="548" id="AMl-U8-jeo"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="bk6-aN-YC3" customClass="CSTextFieldCell">
                                         <rect key="frame" x="0.0" y="46" width="320" height="45"/>
@@ -276,9 +270,9 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="qwm-rD-Ncx" secondAttribute="trailing" constant="18" type="default" id="8wT-Qd-RG4"/>
+                                            <constraint firstAttribute="trailing" secondItem="qwm-rD-Ncx" secondAttribute="trailing" constant="20" type="user" id="8wT-Qd-RG4"/>
                                             <constraint firstItem="qwm-rD-Ncx" firstAttribute="top" secondItem="bk6-aN-YC3" secondAttribute="top" constant="1" type="default" id="JRJ-ex-euo"/>
-                                            <constraint firstItem="qwm-rD-Ncx" firstAttribute="leading" secondItem="bk6-aN-YC3" secondAttribute="leading" constant="18" type="default" id="vGx-7t-HEZ"/>
+                                            <constraint firstItem="qwm-rD-Ncx" firstAttribute="leading" secondItem="bk6-aN-YC3" secondAttribute="leading" constant="20" type="user" id="vGx-7t-HEZ"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="textField" destination="qwm-rD-Ncx" id="9cp-Ge-uzA"/>
@@ -314,9 +308,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eLA-H7-sK9" firstAttribute="trailing" secondItem="Eu1-JO-kLs" secondAttribute="trailing" type="default" id="EiE-hh-w1l"/>
-                            <constraint firstItem="eLA-H7-sK9" firstAttribute="top" secondItem="Eu1-JO-kLs" secondAttribute="top" type="default" id="LD2-sz-mw1"/>
+                            <constraint firstItem="eLA-H7-sK9" firstAttribute="trailing" secondItem="Eu1-JO-kLs" secondAttribute="trailing" type="default" id="8yV-Bz-NI8"/>
                             <constraint firstItem="eLA-H7-sK9" firstAttribute="leading" secondItem="Eu1-JO-kLs" secondAttribute="leading" type="default" id="Uur-G2-9CV"/>
+                            <constraint firstItem="eLA-H7-sK9" firstAttribute="bottom" secondItem="Eu1-JO-kLs" secondAttribute="bottom" type="default" id="VOS-pP-n50"/>
+                            <constraint firstItem="eLA-H7-sK9" firstAttribute="top" secondItem="Eu1-JO-kLs" secondAttribute="top" type="default" id="uK8-kx-Y1f"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Item" id="H7j-Lt-lzD">
@@ -428,6 +423,50 @@
             <point key="canvasLocation" x="-162" y="77"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CSAddressDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSAddressDetailViewController.h"/>
+        </class>
+        <class className="CSCreateProduct" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSCreateProduct.h"/>
+            <relationships>
+                <relationship kind="action" name="backToScaner:"/>
+                <relationship kind="action" name="handleDone:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="CSLoginController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSLoginController.h"/>
+            <relationships>
+                <relationship kind="action" name="handleLogin:"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="storeName" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CSSupplierDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSSupplierDetailViewController.h"/>
+        </class>
+        <class className="CSSuppliersViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSSuppliersViewController.h"/>
+        </class>
+        <class className="CSTaxDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSTaxDetailViewController.h"/>
+        </class>
+        <class className="CSTextFieldCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSTextFieldCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="TaxesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaxesViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
