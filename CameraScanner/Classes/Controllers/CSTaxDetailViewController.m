@@ -51,7 +51,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    CSTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    CSTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell.textField.enabled = NO;
     switch (indexPath.row) {
         case 0:

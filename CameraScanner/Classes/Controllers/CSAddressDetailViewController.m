@@ -51,9 +51,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    CSTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    CSTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell.textField.enabled = NO;
-    // Configure the cell...    
+    // Configure the cell...    				
     switch (indexPath.row) {
         case 0:
             cell.textField.text = [NSLocalizedString(@"Address 1: ", nil) stringByAppendingFormat:@"%@", _isPostal? _contact.postal_address1: _contact.physical_address1];

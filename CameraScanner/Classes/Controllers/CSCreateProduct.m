@@ -130,7 +130,7 @@
 {
     if (indexPath.section == 0)
     {
-        CSTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        CSTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         
         switch (indexPath.row) {
             case 0:
